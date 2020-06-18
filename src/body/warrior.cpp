@@ -21,3 +21,4 @@ int warrior::getY()
 {
 	return this->y;
 }
+bool food_quantity

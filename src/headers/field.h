@@ -27,6 +27,7 @@ public:
 	void afficheDefaut();
 	void drawContainer(sf::RenderWindow &window);
 	void move();
+	int bestCase(int caseWarrior);
 
 	field();
 	field(std::string nameFile);
