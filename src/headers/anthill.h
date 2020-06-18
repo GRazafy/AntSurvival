@@ -19,7 +19,6 @@ private:
 public:
 	anthill();
 	~anthill();
-	void initi();
 	std::vector<warrior *> getWarriors();
 };
 

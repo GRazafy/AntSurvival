@@ -12,6 +12,7 @@ void game::run()
 		myField->checkLife();
 		myField->
 	}*/
+	myField->move();
 	display();
 }
 

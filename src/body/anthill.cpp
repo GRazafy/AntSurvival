@@ -23,15 +23,6 @@ anthill::~anthill()
 	}
 }
 
-void anthill::initi()
-{
-	// warriors.clear();
-	// workers.clear();
-	std::cout << "init running";
-	// this->_queen = new queen();
-	// warriors.push_back(new warrior());
-	// workers.push_back(new worker());
-}
 std::vector<warrior *> anthill::getWarriors()
 {
 	return warriors;

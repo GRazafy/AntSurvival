@@ -3,8 +3,7 @@
 field::field()
 {
 	anthill *acrobat = new anthill();
-	acrobat->initi();
-	/*anthills.push_back(acrobat);*/
+	anthills.push_back(acrobat);
 }
 
 field::field(std::string nameFile)
@@ -179,14 +178,15 @@ void field::move()
 		{
 			xwarrior = e->getWarriors()[i]->getX();
 			ywarrior = e->getWarriors()[i]->getY();
-			for (int a = 0; a < squares.size(); a++)
-			{
-				if (squares[a]->getX() == xwarrior && squares[a]->getY() == ywarrior)
-				{
-					caseWarrior = a;
-				}
-				//PUIS getType DES CASEES AVEC type->SQUARE[I]
-			}
+			// for (int a = 0; a < squares.size(); a++)
+			// {
+			// 	if (squares[a]->getX() == xwarrior && squares[a]->getY() == ywarrior)
+			// 	{
+			// 		caseWarrior = a;
+			// 	}
+			// 	//PUIS getType DES CASEES AVEC type->SQUARE[I]
+			// }
+			caseWarrior = xwarrior * height + ywarrior;
 			e->getWarriors()[i]->move(xwarrior + 1, ywarrior);
 			std::cout << e->getWarriors()[i]->getX() << " " << e->getWarriors()[i]->getY() << std::endl;
 			std::cout << "case du warrior est la num: " << caseWarrior << std::endl;
