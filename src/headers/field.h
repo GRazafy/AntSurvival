@@ -28,6 +28,7 @@ public:
 	void drawContainer(sf::RenderWindow &window);
 	void move();
 	void checkLife();
+	int bestCase(int caseWarrior, bool fullfood);
 
 	field();
 	field(std::string nameFile);

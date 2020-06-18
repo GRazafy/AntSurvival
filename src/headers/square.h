@@ -19,7 +19,6 @@ public:
 
 	int getX();
 	int getY();
-
 	TypeSquare getType();
 	void changeAntInIt();
 

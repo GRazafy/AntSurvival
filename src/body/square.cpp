@@ -77,11 +77,6 @@ void square::draw(sf::RenderTarget &renderTarget, sf::RenderStates renderStates)
 	renderTarget.draw(rectangle);
 }
 
-TypeSquare square::getType()
-{
-	return type;
-}
-
 int square::getX()
 {
 	return x;
@@ -90,4 +85,9 @@ int square::getX()
 int square::getY()
 {
 	return y;
+}
+
+TypeSquare square::getType()
+{
+	return type;
 }

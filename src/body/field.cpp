@@ -163,21 +163,19 @@ void field::move()
 	int xwarrior;
 	int ywarrior;
 	int caseWarrior;
+	int mybestCase;
+	bool fullFood;
 	for (anthill *e : anthills)
 	{
 		for (int i = 0; i < e->getWarriors().size(); i++)
 		{
+			fullFood = e->getWarriors()[i]->getfood_state();
 			xwarrior = e->getWarriors()[i]->getX();
 			ywarrior = e->getWarriors()[i]->getY();
-			// for (int a = 0; a < squares.size(); a++)
-			// {
-			// 	if (squares[a]->getX() == xwarrior && squares[a]->getY() == ywarrior)
-			// 	{
-			// 		caseWarrior = a;
-			// 	}
-			// 	//PUIS getType DES CASEES AVEC type->SQUARE[I]
-			// }
 			caseWarrior = xwarrior * width + ywarrior;
+			//check des alentours
+			mybestCase = bestCase(caseWarrior, fullFood);
+			std::cout << mybestCase << std::endl;
 			e->getWarriors()[i]->move(xwarrior + 1, ywarrior);
 			square *myCase = squares[(xwarrior + 1) * width + ywarrior];
 			squares[(xwarrior + 1) * width + ywarrior]->changeAntInIt();
@@ -193,4 +191,40 @@ void field::checkLife()
 	{
 		e->checkLife();
 	}
+}
+int field::bestCase(int caseWarrior, bool fullFood)
+{
+	int best, EmptyCase = 0, FoodCase = 0;
+	int caseCheck[8];
+	caseCheck[0] = caseWarrior - 1;
+	caseCheck[1] = caseWarrior + 1;
+	caseCheck[2] = caseWarrior - 50;
+	caseCheck[3] = caseWarrior + 50;
+	caseCheck[4] = caseWarrior - 51;
+	caseCheck[5] = caseWarrior - 49;
+	caseCheck[6] = caseWarrior + 51;
+	caseCheck[7] = caseWarrior + 49;
+	for (int i = 0; i < 8; i++)
+	{
+		switch (squares[caseCheck[i]]->getType())
+		{
+		case TypeSquare::Empty:
+			EmptyCase = caseCheck[i];
+			break;
+		case TypeSquare::Food:
+			FoodCase = caseCheck[i];
+			break;
+		default:
+			break;
+		}
+	}
+	if (FoodCase != 0)
+	{
+		best = FoodCase;
+	}
+	else
+	{
+		best = EmptyCase;
+	}
+	return best;
 }

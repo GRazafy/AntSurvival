@@ -1,7 +1,9 @@
 #include "../headers/warrior.h"
 
-warrior::warrior() : food_capacity(150), food_quantity(0), food_level()
+warrior::warrior() : food_capacity(150), food_quantity(0)
 {
+	food_level = 15;
+	food_maximum = 20;
 }
 
 warrior::~warrior()
