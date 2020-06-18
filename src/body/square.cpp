@@ -43,7 +43,7 @@ square::square(int x, int y, TypeSquare type) : x(x),
 	rectangle.setPosition(position);
 }
 
-void square::changeAntInIt()
+void square::changeAntInIt(square *a)
 {
 	antInIt = !antInIt;
 	if (antInIt)
@@ -55,16 +55,16 @@ void square::changeAntInIt()
 		switch (type)
 		{
 		case TypeSquare::Empty:
-			rectangle.setFillColor(sf::Color(255, 255, 255));
+			a->rectangle.setFillColor(sf::Color(255, 255, 255));
 			break;
 		case TypeSquare::Obstacle:
-			rectangle.setFillColor(sf::Color(0, 0, 0));
+			a->rectangle.setFillColor(sf::Color(0, 0, 0));
 			break;
 		case TypeSquare::Food:
-			rectangle.setFillColor(sf::Color(255, 50, 50));
+			a->rectangle.setFillColor(sf::Color(255, 50, 50));
 			break;
 		case TypeSquare::Anthill:
-			rectangle.setFillColor(sf::Color(50, 255, 50));
+			a->rectangle.setFillColor(sf::Color(50, 255, 50));
 			break;
 		default:
 			break;

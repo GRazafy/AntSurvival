@@ -27,7 +27,8 @@ void anthill::checkLife()
 {
 	for (ant *e : warriors)
 	{
-		e->
+		std::cout << "uh";
+		//e->
 	}
 }
 

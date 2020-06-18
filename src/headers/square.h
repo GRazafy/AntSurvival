@@ -20,7 +20,7 @@ public:
 	int getX();
 	int getY();
 	TypeSquare getType();
-	void changeAntInIt();
+	void changeAntInIt(square *a);
 
 private:
 	bool antInIt;

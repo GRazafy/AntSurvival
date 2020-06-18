@@ -178,7 +178,7 @@ void field::move()
 			std::cout << mybestCase << std::endl;
 			e->getWarriors()[i]->move(xwarrior + 1, ywarrior);
 			square *myCase = squares[(xwarrior + 1) * width + ywarrior];
-			squares[(xwarrior + 1) * width + ywarrior]->changeAntInIt();
+			squares[(xwarrior + 1) * width + ywarrior]->changeAntInIt(squares[(xwarrior)*width + ywarrior]);
 			std::cout << e->getWarriors()[i]->getX() << " " << e->getWarriors()[i]->getY() << std::endl;
 			std::cout << "case du warrior est la num: " << caseWarrior << std::endl;
 		}
@@ -218,13 +218,24 @@ int field::bestCase(int caseWarrior, bool fullFood)
 			break;
 		}
 	}
-	if (FoodCase != 0)
+	if (fullFood = false)
 	{
-		best = FoodCase;
+		if (FoodCase != 0)
+		{
+			best = FoodCase;
+		}
+		else if (EmptyCase != 0)
+		{
+			best = EmptyCase;
+		}
+		else
+		{
+			best = caseWarrior;
+		}
 	}
 	else
 	{
-		best = EmptyCase;
+		//Algo pour rentrer
 	}
 	return best;
 }

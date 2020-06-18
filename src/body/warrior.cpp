@@ -1,6 +1,6 @@
 #include "../headers/warrior.h"
 
-warrior::warrior() : food_capacity(150), food_quantity(0)
+warrior::warrior() : food_capacity(50), food_quantity(0)
 {
 	food_level = 15;
 	food_maximum = 20;
@@ -22,4 +22,11 @@ int warrior::getX()
 int warrior::getY()
 {
 	return this->y;
+}
+bool warrior::getfood_state()
+{
+	if (this->food_capacity == this->food_quantity)
+		return true;
+	else
+		return false;
 }

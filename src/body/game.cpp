@@ -5,23 +5,10 @@
 void game::run()
 {
 	myField->generateSquares();
-	finGame = false;
-	while (!finGame)
-	{
-		myField->move();
-		myField->checkLife();
-		myField->
-	}
-	display();
-}
-
-void game::display()
-{
-
 	myField->affichesSquares();
 	sf::RenderWindow window(sf::VideoMode(1500, 750), "Ant survival");
-
-	while (window.isOpen())
+	int counter = 0;
+	while (window.isOpen() && !finGame)
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -33,6 +20,16 @@ void game::display()
 			}
 		}
 
+		myField->checkLife();
+
+		//myField->
+
+		if (counter < 10)
+		{
+			myField->move();
+		}
+		counter++;
+
 		window.clear();
 		myField->drawContainer(window);
 		window.display();
@@ -41,6 +38,7 @@ void game::display()
 game::game()
 {
 	myField = new field();
+	finGame = false;
 	//TODO init all the component
 }
 
