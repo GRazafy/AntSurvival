@@ -218,13 +218,24 @@ int field::bestCase(int caseWarrior, bool fullFood)
 			break;
 		}
 	}
-	if (FoodCase != 0)
+	if (fullFood = false)
 	{
-		best = FoodCase;
+		if (FoodCase != 0)
+		{
+			best = FoodCase;
+		}
+		else if (EmptyCase != 0)
+		{
+			best = EmptyCase;
+		}
+		else
+		{
+			best = caseWarrior;
+		}
 	}
 	else
 	{
-		best = EmptyCase;
+		//Algo pour rentrer
 	}
 	return best;
 }
