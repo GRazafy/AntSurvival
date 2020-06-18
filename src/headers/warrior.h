@@ -15,6 +15,7 @@ public:
     void move(int x, int y);
     int getX();
     int getY();
+    bool getfood_state();
 };
 
 #endif // WARRIOR_H_
