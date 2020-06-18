@@ -6,8 +6,8 @@
 class warrior : public ant
 {
 private:
-    int food_capacity;
-    int food_quantity;
+    int food_capacity; // food that the warrior can bring to his anthill
+    int food_quantity; // food that the warrior currently have
 
 public:
     warrior();

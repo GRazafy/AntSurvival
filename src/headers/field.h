@@ -27,6 +27,7 @@ public:
 	void afficheDefaut();
 	void drawContainer(sf::RenderWindow &window);
 	void move();
+	void checkLife();
 
 	field();
 	field(std::string nameFile);

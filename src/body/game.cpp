@@ -5,14 +5,13 @@
 void game::run()
 {
 	myField->generateSquares();
-	/*finGame = false;
+	finGame = false;
 	while (!finGame)
 	{
 		myField->move();
 		myField->checkLife();
 		myField->
-	}*/
-	myField->move();
+	}
 	display();
 }
 

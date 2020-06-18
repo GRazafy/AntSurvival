@@ -74,9 +74,6 @@ void field::generateSquares()
 			case 'F':
 				squares.push_back(new square(i, u, TypeSquare::Food));
 				break;
-			case 'A':
-				squares.push_back(new square(i, u, TypeSquare::Ant));
-				break;
 			case 'H':
 				squares.push_back(new square(i, u, TypeSquare::Anthill));
 				break;
@@ -114,9 +111,6 @@ void field::affichesSquares()
 			case TypeSquare::Anthill:
 				std::cout << "H";
 				break;
-			case TypeSquare::Ant:
-				std::cout << "A";
-				break;
 			default:
 				break;
 			}
@@ -147,9 +141,6 @@ void field::afficheDefaut()
 				break;
 			case TypeSquare::Anthill:
 				std::cout << "H";
-				break;
-			case TypeSquare::Ant:
-				std::cout << "A";
 				break;
 			default:
 				break;
@@ -186,10 +177,20 @@ void field::move()
 			// 	}
 			// 	//PUIS getType DES CASEES AVEC type->SQUARE[I]
 			// }
-			caseWarrior = xwarrior * height + ywarrior;
+			caseWarrior = xwarrior * width + ywarrior;
 			e->getWarriors()[i]->move(xwarrior + 1, ywarrior);
+			square *myCase = squares[(xwarrior + 1) * width + ywarrior];
+			squares[(xwarrior + 1) * width + ywarrior]->changeAntInIt();
 			std::cout << e->getWarriors()[i]->getX() << " " << e->getWarriors()[i]->getY() << std::endl;
 			std::cout << "case du warrior est la num: " << caseWarrior << std::endl;
 		}
+	}
+}
+
+void field::checkLife()
+{
+	for (anthill *e : anthills)
+	{
+		e->checkLife();
 	}
 }

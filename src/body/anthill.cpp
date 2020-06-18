@@ -23,6 +23,14 @@ anthill::~anthill()
 	}
 }
 
+void anthill::checkLife()
+{
+	for (ant *e : warriors)
+	{
+		e->
+	}
+}
+
 std::vector<warrior *> anthill::getWarriors()
 {
 	return warriors;
