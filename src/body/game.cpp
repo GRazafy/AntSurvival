@@ -2,20 +2,22 @@
 
 // initialisation du pointeur de singleton à zéro
 // (insérer dans le .cpp)
-game *game::singleton = nullptr;
 void game::run()
 {
-	finGame = false;
+	myField->generateSquares();
+	/*finGame = false;
 	while (!finGame)
 	{
 		myField->move();
 		myField->checkLife();
 		myField->
-	}
+	}*/
+	display();
 }
 
 void game::display()
 {
+
 	myField->affichesSquares();
 	sf::RenderWindow window(sf::VideoMode(1500, 750), "Ant survival");
 
@@ -38,6 +40,11 @@ void game::display()
 }
 game::game()
 {
-	myField.generateSquares();
+	myField = new field();
 	//TODO init all the component
+}
+
+game::~game()
+{
+	delete myField;
 }

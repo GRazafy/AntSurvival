@@ -17,13 +17,16 @@ public:
 	square(int x, int y, TypeSquare type);
 	~square();
 
+	int getX();
+	int getY();
+
 	TypeSquare getType();
 
 private:
 	TypeSquare type;
 	int x;
 	int y;
-	virtual void draw(sf::RenderTarget& renderTarget, sf::RenderStates renderStates) const;
+	virtual void draw(sf::RenderTarget &renderTarget, sf::RenderStates renderStates) const;
 
 	sf::RectangleShape rectangle;
 	sf::Vector2f position;

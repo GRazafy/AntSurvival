@@ -1,11 +1,9 @@
 #ifndef ANT_H_ /* Include guard */
 #define ANT_H_
 
-#include <iostream>
-
 class ant
 {
-private:
+protected:
 	int age;
 	int max_age;
 	int x;

@@ -12,14 +12,15 @@ class anthill
 private:
 	int pop_max;
 	int food_quantity;
-	queen* _queen;
-	std::vector<warrior*> warriors;
-	std::vector<worker*> workers;
+	queen *_queen;
+	std::vector<warrior *> warriors;
+	std::vector<worker *> workers;
 	//pheromone
 public:
 	anthill();
 	~anthill();
 	void initi();
+	std::vector<warrior *> getWarriors();
 };
 
 #endif // ANTHILL_H_

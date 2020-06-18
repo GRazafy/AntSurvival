@@ -26,6 +26,7 @@ public:
 	void affichesSquares();
 	void afficheDefaut();
 	void drawContainer(sf::RenderWindow &window);
+	void move();
 
 	field();
 	field(std::string nameFile);

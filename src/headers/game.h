@@ -7,20 +7,12 @@
 class game
 {
 private:
-	static game *singleton;
-	game();
 	field *myField;
 	bool finGame;
 
 public:
-	game(const game &) = delete;
-	game &operator=(const game &) = delete;
-	static game *get()
-	{
-		if (!singleton)
-			singleton = new game;
-		return singleton;
-	};
+	game();
+	~game();
 
 	void run();
 	void display();
