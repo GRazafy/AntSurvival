@@ -189,7 +189,7 @@ void field::move()
 				break;
 			case TypeSquare::Food:
 				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
-				squares[caseWarrior]->setType(TypeSquare::Empty);
+				e->getWarriors()[i]->getFood(squares[caseWarrior]);
 				break;
 			case TypeSquare::Anthill:
 				squares[caseWarrior]->setRectangle(sf::Color(50, 255, 50));
@@ -197,8 +197,8 @@ void field::move()
 			default:
 				break;
 			}
-
-			squares[mybestCase]->changeAntInIt(squares[caseWarrior]);
+			squares[caseWarrior]->changeAntInIt();
+			squares[mybestCase]->changeAntInIt();
 		}
 	}
 }
@@ -210,7 +210,22 @@ void field::checkLife()
 		e->checkLife();
 	}
 }
-int field::bestCase(int caseWarrior, bool fullFood, int i)
+
+void field::antGetBack()
+{
+}
+
+bool field::checkLivingAnt()
+{
+	bool allAntDead = true;
+	for (anthill *e : anthills)
+	{
+		allAntDead = allAntDead && e->checkLivingAnt();
+	}
+
+	return allAntDead;
+}
+int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 {
 	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0;
 	int caseCheck[8];
