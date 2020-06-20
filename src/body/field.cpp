@@ -194,7 +194,7 @@ void field::move()
 
 int field::bestCase(int caseWarrior, bool fullFood)
 {
-	int best, EmptyCase = 0, FoodCase = 0;
+	int test, best, EmptyCase = 0, FoodCase = 0;
 	int caseCheck[8];
 	caseCheck[0] = caseWarrior - 1;
 	caseCheck[1] = caseWarrior + 1;
@@ -218,24 +218,31 @@ int field::bestCase(int caseWarrior, bool fullFood)
 			break;
 		}
 	}
-	if (fullFood == false)
+	while (test == 1)
 	{
-		if (FoodCase != 0)
+		if (fullFood == false)
 		{
-			best = FoodCase;
-		}
-		else if (EmptyCase != 0)
-		{
-			best = EmptyCase;
+			if (FoodCase != 0)
+			{
+				best = FoodCase;
+			}
+			else if (EmptyCase != 0)
+			{
+				best = EmptyCase;
+			}
+			else
+			{
+				best = caseWarrior;
+			}
 		}
 		else
 		{
-			best = caseWarrior;
+			//Algo pour rentrer
 		}
 	}
-	else
+	if ((best < squares.size()) && (squares[best] != NULL))
 	{
-		//Algo pour rentrer
+		test = 0;
+		return best;
 	}
-	return best;
 }
