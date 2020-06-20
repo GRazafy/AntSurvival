@@ -27,8 +27,7 @@ public:
 	void afficheDefaut();
 	void drawContainer(sf::RenderWindow &window);
 	void move();
-	void checkLife();
-	bool checkLivingAnt();
+	bool checkLife();
 	void antGetBack();
 	int bestCase(int caseWarrior, bool fullfood);
 

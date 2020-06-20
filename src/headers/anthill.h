@@ -26,7 +26,7 @@ private:
 public:
 	anthill();
 	~anthill();
-	void checkLife();
+	bool checkLife();
 	bool checkLivingAnt();
 	void layEggs();
 	void printStateLog();

@@ -18,6 +18,7 @@ public:
 	~ant();
 
 	void endTurn();
+	void printStateLog();
 
 	bool endFood();
 	bool ageMax();

@@ -204,28 +204,20 @@ void field::move()
 	}
 }
 
-void field::checkLife()
+bool field::checkLife()
 {
+	bool allAntDead = true;
 	for (anthill *e : anthills)
 	{
-		e->checkLife();
+		allAntDead = allAntDead && e->checkLife();
 	}
+	return allAntDead;
 }
 
 void field::antGetBack()
 {
 }
 
-bool field::checkLivingAnt()
-{
-	bool allAntDead = true;
-	for (anthill *e : anthills)
-	{
-		allAntDead = allAntDead && e->checkLivingAnt();
-	}
-
-	return allAntDead;
-}
 int field::bestCase(int caseWarrior, bool fullFood)
 {
 	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0;

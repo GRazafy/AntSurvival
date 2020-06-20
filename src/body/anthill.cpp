@@ -7,11 +7,6 @@ anthill::anthill()
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
 	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
 	workers.push_back(new worker());
 
 	food_capacity = 2000;
@@ -44,8 +39,10 @@ void anthill::remove(warrior *e)
 	}
 }
 
-void anthill::checkLife()
+bool anthill::checkLife()
 {
+
+	bool queenDead = false;
 	for (warrior *e : warriors)
 	{
 		e->endTurn();
@@ -61,8 +58,11 @@ void anthill::checkLife()
 	if (_queen->endFood() || _queen->ageMax())
 	{
 		std::cout << "a queen is dead..." << std::endl;
+		queenDead = true;
 		delete _queen;
 	}
+
+	return warriors.empty() || queenDead;
 }
 
 bool anthill::checkLivingAnt()
@@ -97,7 +97,7 @@ void anthill::layEggs()
 void anthill::printStateLog()
 {
 	_queen->printStateLog();
-	for (ant *e : warriors)
+	for (warrior *e : warriors)
 	{
 		e->printStateLog();
 	}

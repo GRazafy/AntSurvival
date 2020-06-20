@@ -1,10 +1,10 @@
 #include "../headers/queen.h"
 
-queen::queen() : food_for_birth(10), threshold_egg(10), litter(2), current_eggs(0)
+queen::queen() : food_for_birth(10), threshold_egg(10), litter(5), current_eggs(0)
 {
 	max_age = 400;
 	age = 30;
-	food_level = 10;
+	food_level = 40;
 	food_maximum = 50;
 }
 
@@ -22,11 +22,13 @@ int queen::layEggs()
 		if (this->remainingRoom() > this->litter)
 		{
 			std::cout << "The queen is laying " << litter << " eggs" << std::endl;
+			current_eggs += litter;
 			return litter;
 		}
 		else
 		{
 			std::cout << "The queen is laying " << this->remainingRoom() << " eggs" << std::endl;
+			current_eggs += this->remainingRoom();
 			return this->remainingRoom();
 		}
 	}
@@ -56,4 +58,12 @@ void queen::endTurn()
 {
 	food_level -= 5;
 	age += 1;
+}
+
+void queen::printStateLog()
+{
+	std::cout << " Queen:" << std::endl;
+	std::cout << "       current eggs: " << current_eggs << std::endl;
+	std::cout << "       current food: " << food_level << std::endl;
+	std::cout << "       current age : " << age << std::endl;
 }
