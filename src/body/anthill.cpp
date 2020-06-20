@@ -2,6 +2,7 @@
 
 anthill::anthill()
 {
+	ahCase = 2499;
 	warriors = std::vector<warrior *>();
 	workers = std::vector<worker *>();
 	this->_queen = new queen();
@@ -69,12 +70,12 @@ std::vector<warrior *> anthill::getWarriors()
 	return warriors;
 }
 
-<<<<<<< HEAD
-void anthill::refill(int foodToRefill)
+void anthill::refill(warrior *myWarrior)
 {
-	food_quantity += foodToRefill;
+	int quantity = myWarrior->foodDeposit();
+	food_quantity += quantity;
 }
-=======
+
 void anthill::layEggs()
 {
 	if (_queen->thresholdReached())
@@ -107,4 +108,7 @@ void anthill::printStateLog()
 		e->printStateLog();
 	}
 }
->>>>>>> a1ec70dfbd6a50d8dfa538fbde6c84dc36c84ad3
+int anthill::getahCase()
+{
+	return ahCase;
+}

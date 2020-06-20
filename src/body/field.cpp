@@ -1,5 +1,4 @@
 #include "../headers/field.h"
-
 field::field()
 {
 	anthill *acrobat = new anthill();
@@ -174,8 +173,14 @@ void field::move()
 			ywarrior = e->getWarriors()[i]->getY();
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
+
 			mybestCase = bestCase(caseWarrior, fullFood, e->getWarriors()[i]);
+			if (mybestCase == e->getahCase()
+			{
+				e->refill(warrior * myWarrior);
+			}
 			std::cout << mybestCase << std::endl;
+
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
 			switch (squares[caseWarrior]->getType())
@@ -292,7 +297,6 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		if (anthillCase != 0)
 		{
 			best = anthillCase;
-			myWarrior->foodDeposit();
 		}
 		else
 		{
@@ -300,20 +304,4 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		}
 	}
 	return best;
-}
-
-void field::layEggs()
-{
-	for (anthill *e : anthills)
-	{
-		e->layEggs();
-	}
-}
-
-void field::printStateLog()
-{
-	for (anthill *e : anthills)
-	{
-		e->printStateLog();
-	}
 }
