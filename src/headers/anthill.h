@@ -21,7 +21,7 @@ public:
 	~anthill();
 	void checkLife();
 	bool checkLivingAnt();
-
+	void refill(int foodToRefill);
 	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();
 };

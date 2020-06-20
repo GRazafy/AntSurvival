@@ -174,9 +174,8 @@ void field::move()
 			ywarrior = e->getWarriors()[i]->getY();
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
-			mybestCase = bestCase(caseWarrior, fullFood, i);
+			mybestCase = bestCase(caseWarrior, fullFood, e->getWarriors()[i]);
 			std::cout << mybestCase << std::endl;
-			e->getWarriors()[i]->addCase(mybestCase); //ajoute une case dans le chemin ue la fourmis à prise
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
 			switch (squares[caseWarrior]->getType())
@@ -227,7 +226,7 @@ bool field::checkLivingAnt()
 }
 int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 {
-	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0;
+	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0, anthillCase = 0;
 	int caseCheck[8];
 	caseCheck[0] = caseWarrior - 1;
 	caseCheck[1] = caseWarrior + 1;
@@ -264,6 +263,9 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		case TypeSquare::Food:
 			FoodCase = caseCheck[i];
 			break;
+		case TypeSquare::Anthill:
+			anthillCase = caseCheck[i];
+			break;
 		default:
 			break;
 		}
@@ -282,14 +284,20 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		{
 			best = caseWarrior;
 		}
+		myWarrior->addCase(best); //ajoute une case dans le chemin ue la fourmis à prise
 	}
 	else
 	{
-		for (anthill *e : anthills)
+		myWarrior->deleteLast(); //Delete la dernière case de son chemin
+		if (anthillCase != 0)
 		{
-			e->getWarriors()[i]->deleteLast();		//Delete la dernière case de son chemin
-			best = e->getWarriors()[i]->lastCase(); //Montre la dernière case du vector
-			return best;
+			best = anthillCase;
+			myWarrior->foodDeposit();
+		}
+		else
+		{
+			best = myWarrior->lastCase(); //Montre la dernière case du vector
 		}
 	}
+	return best;
 }

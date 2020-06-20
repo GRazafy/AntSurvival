@@ -22,13 +22,11 @@ public:
     int getX();
     int getY();
     bool getfood_state();
-<<<<<<< HEAD
     void addCase(int bestCase);
     int lastCase();
     void deleteLast();
-=======
     void getFood(square *e);
->>>>>>> fda6b425d7cfbbe003eebf0e03c5ca0bd694f6a6
+    int foodDeposit();
 };
 
 #endif // WARRIOR_H_

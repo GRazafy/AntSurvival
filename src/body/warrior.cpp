@@ -56,3 +56,9 @@ void warrior::deleteLast()
 {
 	path.pop_back();
 }
+int warrior::foodDeposit()
+{
+	int tmp = food_quantity;
+	food_quantity = 0;
+	return tmp;
+}

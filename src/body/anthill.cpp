@@ -57,3 +57,8 @@ std::vector<warrior *> anthill::getWarriors()
 {
 	return warriors;
 }
+
+void anthill::refill(int foodToRefill)
+{
+	food_quantity += foodToRefill;
+}
