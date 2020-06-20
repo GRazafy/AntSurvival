@@ -74,9 +74,6 @@ void field::generateSquares()
 			case 'F':
 				squares.push_back(new square(i, u, TypeSquare::Food));
 				break;
-			case 'A':
-				squares.push_back(new square(i, u, TypeSquare::Ant));
-				break;
 			case 'H':
 				squares.push_back(new square(i, u, TypeSquare::Anthill));
 				break;
@@ -114,9 +111,6 @@ void field::affichesSquares()
 			case TypeSquare::Anthill:
 				std::cout << "H";
 				break;
-			case TypeSquare::Ant:
-				std::cout << "A";
-				break;
 			default:
 				break;
 			}
@@ -147,9 +141,6 @@ void field::afficheDefaut()
 				break;
 			case TypeSquare::Anthill:
 				std::cout << "H";
-				break;
-			case TypeSquare::Ant:
-				std::cout << "A";
 				break;
 			default:
 				break;
@@ -184,14 +175,40 @@ void field::move()
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
 			mybestCase = bestCase(caseWarrior, fullFood);
+			std::cout << mybestCase << std::endl;
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
-			std::cout << e->getWarriors()[i]->getX() << " " << e->getWarriors()[i]->getY() << std::endl;
-			std::cout << "case du warrior est la num: " << caseWarrior << std::endl;
+			switch (squares[caseWarrior]->getType())
+			{
+			case TypeSquare::Empty:
+				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
+				break;
+			case TypeSquare::Obstacle:
+				squares[caseWarrior]->setRectangle(sf::Color(0, 0, 0));
+				break;
+			case TypeSquare::Food:
+				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
+				squares[caseWarrior]->setType(TypeSquare::Empty);
+				break;
+			case TypeSquare::Anthill:
+				squares[caseWarrior]->setRectangle(sf::Color(50, 255, 50));
+				break;
+			default:
+				break;
+			}
+
+			squares[mybestCase]->changeAntInIt(squares[caseWarrior]);
 		}
 	}
 }
 
+void field::checkLife()
+{
+	for (anthill *e : anthills)
+	{
+		e->checkLife();
+	}
+}
 int field::bestCase(int caseWarrior, bool fullFood)
 {
 	int test, best, EmptyCase = 0, FoodCase = 0;

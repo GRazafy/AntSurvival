@@ -8,8 +8,8 @@ protected:
 	int max_age;
 	int x;
 	int y;
-	int food_consumed;
-	int food_needed;
+	int food_level;	  // current food level
+	int food_maximum; // maximum food that can eat the ant
 
 public:
 	ant();

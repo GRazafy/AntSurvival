@@ -1,12 +1,12 @@
 #ifndef SQUARE_H_ /* Include guard */
 #define SQUARE_H_
 #include <SFML/Graphics.hpp>
+#include <iostream>
 enum TypeSquare
 {
 	Obstacle,
 	Empty,
 	Food,
-	Ant,
 	Anthill
 };
 
@@ -20,8 +20,12 @@ public:
 	int getX();
 	int getY();
 	TypeSquare getType();
+	void setType(TypeSquare new_type);
+	void changeAntInIt(square *a);
+	void setRectangle(sf::Color colour);
 
 private:
+	bool antInIt;
 	TypeSquare type;
 	int x;
 	int y;

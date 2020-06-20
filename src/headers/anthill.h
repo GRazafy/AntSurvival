@@ -19,6 +19,7 @@ private:
 public:
 	anthill();
 	~anthill();
+	void checkLife();
 	std::vector<warrior *> getWarriors();
 };
 

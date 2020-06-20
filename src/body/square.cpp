@@ -30,9 +30,6 @@ square::square(int x, int y, TypeSquare type) : x(x),
 	case TypeSquare::Anthill:
 		rectangle.setFillColor(sf::Color(50, 255, 50));
 		break;
-	case TypeSquare::Ant:
-		rectangle.setFillColor(sf::Color(50, 50, 255));
-		break;
 	default:
 		break;
 	}
@@ -40,8 +37,20 @@ square::square(int x, int y, TypeSquare type) : x(x),
 	position.x = x * 15;
 	position.y = y * 15;
 
+	antInIt = false;
+
 	rectangle.setSize(sf::Vector2f(width, height));
 	rectangle.setPosition(position);
+}
+
+void square::changeAntInIt(square *a)
+{
+	antInIt = !antInIt;
+	if (antInIt)
+	{
+		rectangle.setFillColor(sf::Color(255, 120, 50));
+	}
+	a->antInIt;
 }
 
 void square::draw(sf::RenderTarget &renderTarget, sf::RenderStates renderStates) const
@@ -59,7 +68,17 @@ int square::getY()
 	return y;
 }
 
+void square::setRectangle(sf::Color colour)
+{
+	rectangle.setFillColor(colour);
+}
+
 TypeSquare square::getType()
 {
 	return type;
+}
+
+void square::setType(TypeSquare new_type)
+{
+	type = new_type;
 }

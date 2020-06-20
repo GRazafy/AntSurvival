@@ -2,6 +2,8 @@
 
 warrior::warrior() : food_capacity(50), food_quantity(0)
 {
+	food_level = 15;
+	food_maximum = 20;
 }
 
 warrior::~warrior()
