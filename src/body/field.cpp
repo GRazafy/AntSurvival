@@ -224,7 +224,7 @@ bool field::checkLivingAnt()
 }
 int field::bestCase(int caseWarrior, bool fullFood)
 {
-	int best, EmptyCase = 0, FoodCase = 0;
+	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0;
 	int caseCheck[8];
 	caseCheck[0] = caseWarrior - 1;
 	caseCheck[1] = caseWarrior + 1;
@@ -236,10 +236,27 @@ int field::bestCase(int caseWarrior, bool fullFood)
 	caseCheck[7] = caseWarrior + 49;
 	for (int i = 0; i < 8; i++)
 	{
+		if (caseWarrior % 50 == 0 && caseCheck[i] % 49 == 0)
+		{
+			break;
+		}
+		else if (caseWarrior % 49 == 0 && caseCheck[i] % 50 == 0)
+		{
+			break;
+		}
+		else if (caseWarrior < 50 && caseCheck[i] < 0)
+		{
+			break;
+		}
+		else if (caseWarrior > 4949 && caseCheck[i] > 4999)
+		{
+			break;
+		}
 		switch (squares[caseCheck[i]]->getType())
 		{
 		case TypeSquare::Empty:
-			EmptyCase = caseCheck[i];
+			emptyTab[counter] = caseCheck[i];
+			counter++;
 			break;
 		case TypeSquare::Food:
 			FoodCase = caseCheck[i];
@@ -254,9 +271,9 @@ int field::bestCase(int caseWarrior, bool fullFood)
 		{
 			best = FoodCase;
 		}
-		else if (EmptyCase != 0)
+		else if (emptyTab[0] != 0)
 		{
-			best = EmptyCase;
+			best = emptyTab[std::rand() % counter];
 		}
 		else
 		{
