@@ -92,10 +92,12 @@ int square::takeFood(int current_level, int capacity)
 	{
 		if (foodInSquare + current_level > capacity)
 		{
+			foodInSquare = 0;
 			return capacity;
 		}
 		else
 		{
+			foodInSquare = 0;
 			return foodInSquare + current_level;
 		}
 	}
@@ -112,10 +114,12 @@ int square::feedAnt(int current_food, int food_max)
 	{
 		if (foodInSquare + current_food > food_max)
 		{
+			foodInSquare = 0;
 			return food_max;
 		}
 		else
 		{
+			foodInSquare = 0;
 			return foodInSquare + current_food;
 		}
 	}

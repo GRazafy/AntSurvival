@@ -30,6 +30,7 @@ void game::run()
 	}
 
 	std::cout << "end of the game ..." << std::endl;
+	window.close();
 }
 game::game()
 {

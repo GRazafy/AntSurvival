@@ -29,6 +29,7 @@ public:
 	void move();
 	void checkLife();
 	bool checkLivingAnt();
+	void antGetBack();
 	int bestCase(int caseWarrior, bool fullfood);
 
 	field();

@@ -7,10 +7,12 @@
 class warrior : public ant
 {
 private:
+    static int nextID;
     int food_capacity; // food that the warrior can bring to his anthill
     int food_quantity; // food that the warrior currently have
 
 public:
+    int id;
     warrior();
     ~warrior();
     void move(int x, int y);

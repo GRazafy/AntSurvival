@@ -212,6 +212,10 @@ void field::checkLife()
 	}
 }
 
+void field::antGetBack()
+{
+}
+
 bool field::checkLivingAnt()
 {
 	bool allAntDead = true;
@@ -282,7 +286,8 @@ int field::bestCase(int caseWarrior, bool fullFood)
 	}
 	else
 	{
-		//Algo pour rentrer
+		best = caseWarrior - 1;
+		antGetBack();
 	}
 	return best;
 }
