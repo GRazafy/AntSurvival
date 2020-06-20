@@ -1,7 +1,10 @@
 #include "../headers/warrior.h"
-int warrior::nextID = 0;
+
+int warrior::nextID = 0; //id of the ant
+
 warrior::warrior() : food_capacity(50), food_quantity(0)
 {
+	age = 20; // a warrior is 20;
 	food_level = 15;
 	food_maximum = 20;
 	id = ++nextID;
@@ -26,7 +29,7 @@ int warrior::getY()
 }
 void warrior::getFood(square *e)
 {
-	//food_level = e->feedAnt(food_level, food_maximum);
+	food_level = e->feedAnt(food_level, food_maximum);
 	food_quantity = e->takeFood(food_quantity, food_capacity);
 	std::cout << "ant: " << id << " food quantity: " << food_quantity << " from square: " << e << std::endl;
 

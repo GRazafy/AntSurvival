@@ -291,3 +291,19 @@ int field::bestCase(int caseWarrior, bool fullFood)
 	}
 	return best;
 }
+
+void field::layEggs()
+{
+	for (anthill *e : anthills)
+	{
+		e->layEggs();
+	}
+}
+
+void field::printStateLog()
+{
+	for (anthill *e : anthills)
+	{
+		e->printStateLog();
+	}
+}

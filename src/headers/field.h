@@ -32,6 +32,10 @@ public:
 	void antGetBack();
 	int bestCase(int caseWarrior, bool fullfood);
 
+	void printStateLog();
+
+	void layEggs();
+
 	field();
 	field(std::string nameFile);
 	~field();

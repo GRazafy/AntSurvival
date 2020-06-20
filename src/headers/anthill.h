@@ -4,6 +4,8 @@
 #include "queen.h"
 #include "warrior.h"
 #include "worker.h"
+#include "pre_natal.h"
+#include "egg.h"
 #include <iostream>
 #include <vector>
 
@@ -12,15 +14,22 @@ class anthill
 private:
 	int pop_max;
 	int food_quantity;
+	int food_capacity;
+	int current_pre_natals;
+
 	queen *_queen;
 	std::vector<warrior *> warriors;
 	std::vector<worker *> workers;
+	pre_natal *pre_natals[10];
+
 	//pheromone
 public:
 	anthill();
 	~anthill();
 	void checkLife();
 	bool checkLivingAnt();
+	void layEggs();
+	void printStateLog();
 
 	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();
