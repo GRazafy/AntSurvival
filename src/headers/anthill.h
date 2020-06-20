@@ -20,6 +20,9 @@ public:
 	anthill();
 	~anthill();
 	void checkLife();
+	bool checkLivingAnt();
+
+	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();
 };
 

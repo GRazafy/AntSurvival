@@ -23,6 +23,17 @@ int warrior::getY()
 {
 	return this->y;
 }
+void warrior::getFood(square *e)
+{
+	food_level = e->feedAnt(food_level, food_maximum);
+	food_quantity = e->takeFood(food_quantity, food_capacity);
+
+	if (e->getFood() == 0)
+	{
+		e->setType(TypeSquare::Empty);
+	}
+}
+
 bool warrior::getfood_state()
 {
 	if (this->food_capacity == this->food_quantity)

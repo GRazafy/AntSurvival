@@ -28,6 +28,7 @@ public:
 	void drawContainer(sf::RenderWindow &window);
 	void move();
 	void checkLife();
+	bool checkLivingAnt();
 	int bestCase(int caseWarrior, bool fullfood);
 
 	field();

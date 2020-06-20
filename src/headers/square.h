@@ -19,10 +19,15 @@ public:
 
 	int getX();
 	int getY();
+	int getFood();
+
 	TypeSquare getType();
 	void setType(TypeSquare new_type);
-	void changeAntInIt(square *a);
 	void setRectangle(sf::Color colour);
+
+	void changeAntInIt();
+	int takeFood(int current_level, int capacity);
+	int feedAnt(int current_food, int food_max);
 
 private:
 	bool antInIt;
@@ -30,6 +35,7 @@ private:
 	int x;
 	int y;
 	virtual void draw(sf::RenderTarget &renderTarget, sf::RenderStates renderStates) const;
+	int foodInSquare;
 
 	sf::RectangleShape rectangle;
 	sf::Vector2f position;

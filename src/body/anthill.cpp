@@ -23,13 +23,34 @@ anthill::~anthill()
 	}
 }
 
+void anthill::remove(warrior *e)
+{
+	for (std::vector<warrior *>::iterator i = warriors.begin(); i != warriors.end(); ++i)
+	{
+		if (*i == e)
+		{
+			warriors.erase(i--);
+		}
+	}
+}
+
 void anthill::checkLife()
 {
-	/*for (ant *e : warriors)
+	for (warrior *e : warriors)
 	{
-		std::cout << "uh";
-		//e->
-	}*/
+		e->endTurn();
+		if (e->endFood() || e->ageMax())
+		{
+			std::cout << "an ant is dead..." << std::endl;
+			remove(e);
+			delete e;
+		}
+	}
+}
+
+bool anthill::checkLivingAnt()
+{
+	return warriors.empty();
 }
 
 std::vector<warrior *> anthill::getWarriors()

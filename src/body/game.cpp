@@ -5,9 +5,8 @@
 void game::run()
 {
 	myField->generateSquares();
-	myField->affichesSquares();
+	//myField->affichesSquares();
 	sf::RenderWindow window(sf::VideoMode(1500, 750), "Ant survival");
-	int counter = 0;
 	while (window.isOpen() && !finGame)
 	{
 		sf::Event event;
@@ -20,16 +19,17 @@ void game::run()
 			}
 		}
 
-		myField->checkLife();
-
-		sleep(1);
-
 		myField->move();
+		myField->checkLife();
+		finGame = myField->checkLivingAnt();
 
 		window.clear();
 		myField->drawContainer(window);
 		window.display();
+		sleep(1);
 	}
+
+	std::cout << "end of the game ..." << std::endl;
 }
 game::game()
 {

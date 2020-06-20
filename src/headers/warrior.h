@@ -2,6 +2,7 @@
 #define WARRIOR_H_
 
 #include "../headers/ant.h"
+#include "../headers/square.h"
 
 class warrior : public ant
 {
@@ -16,6 +17,7 @@ public:
     int getX();
     int getY();
     bool getfood_state();
+    void getFood(square *e);
 };
 
 #endif // WARRIOR_H_

@@ -14,6 +14,13 @@ protected:
 public:
 	ant();
 	~ant();
+
+	void endTurn();
+
+	
+	bool endFood();
+	bool ageMax();
+
 };
 
 #endif // ANT_H_

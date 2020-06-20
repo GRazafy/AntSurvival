@@ -175,7 +175,9 @@ void field::move()
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
 			mybestCase = bestCase(caseWarrior, fullFood);
-			std::cout << mybestCase << std::endl;
+
+			//std::cout << mybestCase << std::endl;
+
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
 			switch (squares[caseWarrior]->getType())
@@ -188,7 +190,7 @@ void field::move()
 				break;
 			case TypeSquare::Food:
 				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
-				squares[caseWarrior]->setType(TypeSquare::Empty);
+				e->getWarriors()[i]->getFood(squares[caseWarrior]);
 				break;
 			case TypeSquare::Anthill:
 				squares[caseWarrior]->setRectangle(sf::Color(50, 255, 50));
@@ -196,8 +198,8 @@ void field::move()
 			default:
 				break;
 			}
-
-			squares[mybestCase]->changeAntInIt(squares[caseWarrior]);
+			squares[caseWarrior]->changeAntInIt();
+			squares[mybestCase]->changeAntInIt();
 		}
 	}
 }
@@ -208,6 +210,17 @@ void field::checkLife()
 	{
 		e->checkLife();
 	}
+}
+
+bool field::checkLivingAnt()
+{
+	bool allAntDead = true;
+	for (anthill *e : anthills)
+	{
+		allAntDead = allAntDead && e->checkLivingAnt();
+	}
+
+	return allAntDead;
 }
 int field::bestCase(int caseWarrior, bool fullFood)
 {
