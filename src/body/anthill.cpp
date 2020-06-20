@@ -6,6 +6,12 @@ anthill::anthill()
 	workers = std::vector<worker *>();
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
 	workers.push_back(new worker());
 }
 
