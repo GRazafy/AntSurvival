@@ -176,11 +176,28 @@ void field::move()
 			//check des alentours
 			mybestCase = bestCase(caseWarrior, fullFood);
 			std::cout << mybestCase << std::endl;
-			e->getWarriors()[i]->move(xwarrior + 1, ywarrior);
-			square *myCase = squares[(xwarrior + 1) * width + ywarrior];
-			squares[(xwarrior + 1) * width + ywarrior]->changeAntInIt(squares[(xwarrior)*width + ywarrior]);
-			std::cout << e->getWarriors()[i]->getX() << " " << e->getWarriors()[i]->getY() << std::endl;
-			std::cout << "case du warrior est la num: " << caseWarrior << std::endl;
+			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
+
+			switch (squares[caseWarrior]->getType())
+			{
+			case TypeSquare::Empty:
+				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
+				break;
+			case TypeSquare::Obstacle:
+				squares[caseWarrior]->setRectangle(sf::Color(0, 0, 0));
+				break;
+			case TypeSquare::Food:
+				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
+				squares[caseWarrior]->setType(TypeSquare::Empty);
+				break;
+			case TypeSquare::Anthill:
+				squares[caseWarrior]->setRectangle(sf::Color(50, 255, 50));
+				break;
+			default:
+				break;
+			}
+
+			squares[mybestCase]->changeAntInIt(squares[caseWarrior]);
 		}
 	}
 }
@@ -218,7 +235,7 @@ int field::bestCase(int caseWarrior, bool fullFood)
 			break;
 		}
 	}
-	if (fullFood = false)
+	if (fullFood == false)
 	{
 		if (FoodCase != 0)
 		{

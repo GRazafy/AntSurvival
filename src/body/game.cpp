@@ -22,13 +22,9 @@ void game::run()
 
 		myField->checkLife();
 
-		//myField->
+		sleep(1);
 
-		if (counter < 10)
-		{
-			myField->move();
-		}
-		counter++;
+		myField->move();
 
 		window.clear();
 		myField->drawContainer(window);

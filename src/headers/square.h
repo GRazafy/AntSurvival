@@ -20,7 +20,9 @@ public:
 	int getX();
 	int getY();
 	TypeSquare getType();
+	void setType(TypeSquare new_type);
 	void changeAntInIt(square *a);
+	void setRectangle(sf::Color colour);
 
 private:
 	bool antInIt;
