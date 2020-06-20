@@ -30,3 +30,16 @@ bool warrior::getfood_state()
 	else
 		return false;
 }
+
+void warrior::addCase(int bestCase)
+{
+	path.push_back(bestCase);
+}
+int warrior::lastCase()
+{
+	return path.back();
+}
+void warrior::deleteLast()
+{
+	path.pop_back();
+}
