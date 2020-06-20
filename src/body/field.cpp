@@ -175,11 +175,11 @@ void field::move()
 			//check des alentours
 
 			mybestCase = bestCase(caseWarrior, fullFood, e->getWarriors()[i]);
-			if (mybestCase == e->getahCase()
+			if (mybestCase == e->getahCase())
 			{
-				e->refill(warrior * myWarrior);
+				e->refill(e->getWarriors()[i]);
 			}
-			std::cout << mybestCase << std::endl;
+			std::cout << "la meilleure case : " << mybestCase << std::endl;
 
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
@@ -207,12 +207,14 @@ void field::move()
 	}
 }
 
-void field::checkLife()
+bool field::checkLife()
 {
+	bool allAntDead = true;
 	for (anthill *e : anthills)
 	{
-		e->checkLife();
+		allAntDead = allAntDead && e->checkLife();
 	}
+	return allAntDead;
 }
 
 void field::antGetBack()

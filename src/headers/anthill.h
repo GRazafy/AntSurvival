@@ -26,11 +26,11 @@ private:
 public:
 	anthill();
 	~anthill();
-	void checkLife();
+	bool checkLife();
 	bool checkLivingAnt();
 	void refill(warrior *myWarrior);
-	void layEggs();
-	void printStateLog();
+	// void layEggs();
+	// void printStateLog();
 	int getahCase();
 	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();

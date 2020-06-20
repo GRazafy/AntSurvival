@@ -8,16 +8,20 @@ ant::~ant()
 {
 }
 
-bool ant::endFood(){
-    return food_level == 0;
+bool ant::endFood()
+{
+    return food_level <= 0;
 }
 
-bool ant::ageMax(){
+void ant::printStateLog() {}
+
+bool ant::ageMax()
+{
     return age == max_age;
 }
 
-void ant::endTurn(){
+void ant::endTurn()
+{
     food_level -= 1;
     age += 1;
 }
-

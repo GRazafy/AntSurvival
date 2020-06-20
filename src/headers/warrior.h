@@ -13,6 +13,7 @@ private:
     int food_capacity; // food that the warrior can bring to his anthill
     int food_quantity; // food that the warrior currently have
     std::vector<int> path;
+    square *last_food_square;
 
 public:
     int id;
@@ -27,6 +28,7 @@ public:
     void deleteLast();
     void getFood(square *e);
     int foodDeposit();
+    void printStateLog();
 };
 
 #endif // WARRIOR_H_
