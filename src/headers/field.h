@@ -32,6 +32,10 @@ public:
 	bool checkLivingAnt();
 	void antGetBack();
 
+	void printStateLog();
+
+	void layEggs();
+
 	field();
 	field(std::string nameFile);
 	~field();

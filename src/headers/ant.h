@@ -1,6 +1,8 @@
 #ifndef ANT_H_ /* Include guard */
 #define ANT_H_
 
+#include <iostream>
+
 class ant
 {
 protected:
@@ -17,10 +19,8 @@ public:
 
 	void endTurn();
 
-	
 	bool endFood();
 	bool ageMax();
-
 };
 
 #endif // ANT_H_

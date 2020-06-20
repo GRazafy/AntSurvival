@@ -4,11 +4,15 @@
 // (insérer dans le .cpp)
 void game::run()
 {
+
 	myField->generateSquares();
 	//myField->affichesSquares();
 	sf::RenderWindow window(sf::VideoMode(1500, 750), "Ant survival");
+	int counter = 0;
 	while (window.isOpen() && !finGame)
 	{
+		counter += 1;
+		std::cout << "Tour n° : " << counter << std::endl;
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -20,13 +24,20 @@ void game::run()
 		}
 
 		myField->move();
+		myField->layEggs();
 		myField->checkLife();
+		//TODO feed ant in the anthill
+		//TODO circle of life (workers to warriors and pre_natal ants)
+		//TODO change the field ?
 		finGame = myField->checkLivingAnt();
+
+		myField->printStateLog();
 
 		window.clear();
 		myField->drawContainer(window);
 		window.display();
-		sleep(1);
+		sleep(2);
+		std::cout.flush();
 	}
 
 	std::cout << "end of the game ..." << std::endl;
