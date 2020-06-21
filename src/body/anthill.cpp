@@ -8,9 +8,9 @@ anthill::anthill()
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
 	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
+	// warriors.push_back(new warrior());
+	// warriors.push_back(new warrior());
+	// warriors.push_back(new warrior());
 	workers.push_back(new worker());
 
 	food_capacity = 2000;
@@ -47,24 +47,24 @@ bool anthill::checkLife()
 {
 
 	bool queenDead = false;
-	// for (warrior *e : warriors)
-	// {
-	// 	e->endTurn();
-	// 	if (e->endFood() || e->ageMax())
-	// 	{
-	// 		std::cout << "a Warrior is dead..." << std::endl;
-	// 		remove(e);
-	// 		delete e;
-	// 	}
-	// }
+	for (warrior *e : warriors)
+	{
+		e->endTurn();
+		if (e->endFood() || e->ageMax())
+		{
+			std::cout << "a Warrior is dead..." << std::endl;
+			remove(e);
+			delete e;
+		}
+	}
 
-	// _queen->endTurn();
-	// if (_queen->endFood() || _queen->ageMax())
-	// {
-	// 	std::cout << "a queen is dead..." << std::endl;
-	// 	queenDead = true;
-	// 	delete _queen;
-	// }
+	_queen->endTurn();
+	if (_queen->endFood() || _queen->ageMax())
+	{
+		std::cout << "a queen is dead..." << std::endl;
+		queenDead = true;
+		delete _queen;
+	}
 
 	return warriors.empty() || queenDead;
 }
@@ -82,43 +82,46 @@ std::vector<warrior *> anthill::getWarriors()
 void anthill::refill(warrior *myWarrior)
 {
 	int quantity = myWarrior->foodDeposit();
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
 	food_quantity += quantity;
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
 }
 
-// void anthill::layEggs()
-// {
-// 	if (_queen->thresholdReached())
-// 	{
-// 		std::cout << "the queen can't lay eggs" << std::endl;
-// 	}
-// 	else
-// 	{
-// 		int numberToLay = _queen->layEggs();
-// 		if (numberToLay != 0)
-// 		{
-// 			for (int i = current_pre_natals + 1; i < numberToLay; i++)
-// 			{
-// 				pre_natals[i] = new egg();
-// 			}
-// 		}
-// 	}
-// }
+void anthill::layEggs()
+{
+	if (_queen->thresholdReached())
+	{
+		std::cout << "the queen can't lay eggs" << std::endl;
+	}
+	else
+	{
+		int numberToLay = _queen->layEggs();
+		if (numberToLay != 0)
+		{
+			for (int i = current_pre_natals + 1; i < numberToLay; i++)
+			{
+				pre_natals[i] = new egg();
+				current_pre_natals += 1;
+			}
+		}
+	}
+}
 
-// void anthill::printStateLog()
-// {
-// 	_queen->printStateLog();
-// 	for (warrior *e : warriors)
-// 	{
-// 		e->printStateLog();
-// 	}
+void anthill::printStateLog()
+{
+	_queen->printStateLog();
+	for (warrior *e : warriors)
+	{
+		e->printStateLog();
+	}
 
-// 	for (ant *e : workers)
-// 	{
-// 		e->printStateLog();
-// 	}
-// }
+	for (ant *e : workers)
+	{
+		e->printStateLog();
+	}
+
+	std::cout << "Anthill: " << std::endl;
+	std::cout << "       number of  pre_natals: " << current_pre_natals << std::endl;
+	std::cout << "       current food         :" << food_quantity << std::endl;
+}
 int anthill::getahCase()
 {
 	return ahCase;

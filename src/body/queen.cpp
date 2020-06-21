@@ -4,8 +4,8 @@ queen::queen() : food_for_birth(10), threshold_egg(10), litter(5), current_eggs(
 {
 	max_age = 400;
 	age = 30;
-	food_level = 40;
-	food_maximum = 50;
+	food_level = 60;
+	food_maximum = 100;
 }
 
 queen::~queen()

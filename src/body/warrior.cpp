@@ -65,17 +65,17 @@ void warrior::deleteLast()
 }
 int warrior::foodDeposit()
 {
-	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	//std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
 	int tmp = food_quantity;
 	food_quantity = 0;
-	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	//std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
 	return tmp;
 }
-// void warrior::printStateLog()
-// {
-// 	std::cout << " Warrior with ID:" << id << std::endl;
-// 	std::cout << "       current food_transporting: " << food_quantity << std::endl;
-// 	std::cout << "       current food             : " << food_level << std::endl;
-// 	std::cout << "       current age              : " << age << std::endl;
-// 	std::cout << "       last food square         :" << last_food_square << std::endl;
-// }
+void warrior::printStateLog()
+{
+	std::cout << " Warrior with ID:" << id << std::endl;
+	std::cout << "       current food_transporting: " << food_quantity << std::endl;
+	std::cout << "       current food             : " << food_level << std::endl;
+	std::cout << "       current age              : " << age << std::endl;
+	std::cout << "       last food square         :" << last_food_square << std::endl;
+}

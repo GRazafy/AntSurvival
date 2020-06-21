@@ -24,14 +24,14 @@ void game::run()
 		}
 
 		myField->move();
-		// myField->layEggs();
+		myField->layEggs();
 
 		//TODO feed ant in the anthill
 		//TODO circle of life (workers to warriors and pre_natal ants)
 		//TODO change the field ?
 		finGame = myField->checkLife();
 
-		// myField->printStateLog();
+		myField->printStateLog();
 
 		window.clear();
 		myField->drawContainer(window);

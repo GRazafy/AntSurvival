@@ -179,7 +179,7 @@ void field::move()
 			{
 				e->refill(e->getWarriors()[i]);
 			}
-			std::cout << "la meilleure case : " << mybestCase << std::endl;
+			//std::cout << "la meilleure case : " << mybestCase << std::endl;
 
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
@@ -306,4 +306,20 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		}
 	}
 	return best;
+}
+
+void field::layEggs()
+{
+	for (anthill *e : anthills)
+	{
+		e->layEggs();
+	}
+}
+
+void field::printStateLog()
+{
+	for (anthill *e : anthills)
+	{
+		e->printStateLog();
+	}
 }

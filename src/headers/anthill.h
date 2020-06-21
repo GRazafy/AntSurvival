@@ -16,7 +16,8 @@ private:
 	int food_quantity;
 	int food_capacity;
 	int current_pre_natals;
-	int ahCase;
+	int ahCase; //square of anthill
+
 	queen *_queen;
 	std::vector<warrior *> warriors;
 	std::vector<worker *> workers;
@@ -29,8 +30,8 @@ public:
 	bool checkLife();
 	bool checkLivingAnt();
 	void refill(warrior *myWarrior);
-	// void layEggs();
-	// void printStateLog();
+	void layEggs();
+	void printStateLog();
 	int getahCase();
 	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();
