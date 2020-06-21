@@ -57,7 +57,10 @@ void warrior::addCase(int bestCase)
 }
 int warrior::lastCase()
 {
-	return path.back();
+	if (path.empty())
+		return 1;
+	else
+		return path.back();
 }
 void warrior::deleteLast()
 {

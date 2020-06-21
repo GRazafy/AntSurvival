@@ -273,9 +273,16 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		switch (squares[caseCheck[i]]->getType())
 		{
 		case TypeSquare::Empty:
-			emptyTab[counter] = caseCheck[i];
-			counter++;
-			break;
+			if ((myWarrior->lastCase() != 1) && caseCheck[i] == myWarrior->lastCase())
+			{
+				break; // on ne retient pas la dernière case empruntée
+			}
+			else
+			{
+				emptyTab[counter] = caseCheck[i];
+				counter++;
+				break;
+			}
 		case TypeSquare::Food:
 			FoodCase = caseCheck[i];
 			break;
