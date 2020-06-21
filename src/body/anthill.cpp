@@ -99,10 +99,10 @@ void anthill::layEggs()
 		int numberToLay = _queen->layEggs();
 		if (numberToLay != 0)
 		{
-			for (int i = current_pre_natals + 1; i < numberToLay; i++)
+			for (int i = current_pre_natals; i < numberToLay; i++)
 			{
-				pre_natals[i] = new egg();
-				current_pre_natals += 1;
+				pre_natals.push_back(new egg());
+				current_pre_natals++;
 			}
 		}
 	}

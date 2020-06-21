@@ -37,8 +37,7 @@ void game::run()
 		window.clear();
 		myField->drawContainer(window);
 		window.display();
-		sleep(2);
-		std::cout.flush();
+		sleep(1);
 	}
 
 	std::cout << "end of the game ..." << std::endl;

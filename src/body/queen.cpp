@@ -14,10 +14,11 @@ queen::~queen()
 
 int queen::layEggs()
 {
-	if (food_level >= food_for_birth)
+	int eggsToLay = this->remainingRoom();
+	if (food_level >= food_for_birth && eggsToLay != 0)
 	{
 
-		if (this->remainingRoom() > this->litter)
+		if (eggsToLay > this->litter)
 		{
 			std::cout << "The queen is laying " << litter << " eggs" << std::endl;
 			food_level -= food_for_birth;
@@ -26,10 +27,11 @@ int queen::layEggs()
 		}
 		else
 		{
-			std::cout << "The queen is laying " << this->remainingRoom() << " eggs" << std::endl;
+
+			std::cout << "The queen is laying " << eggsToLay << " eggs" << std::endl;
 			food_level -= food_for_birth;
-			current_eggs += this->remainingRoom();
-			return this->remainingRoom();
+			current_eggs += eggsToLay;
+			return eggsToLay;
 		}
 	}
 	else
