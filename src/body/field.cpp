@@ -31,7 +31,6 @@ std::array<std::array<char, width>, height> field::generateRandomMap()
 		for (int u = 0; u < width; u++)
 		{
 			rand = std::rand() % 10;
-
 			if (i == height / 2 && u == width / 2)
 			{
 				b[i][u] = 'H';
@@ -182,14 +181,13 @@ void field::move()
 			ywarrior = e->getWarriors()[i]->getY();
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
-
+			std::cout << " fullfod = " << fullFood << std::endl;
 			mybestCase = bestCase(caseWarrior, fullFood, e->getWarriors()[i]);
 			if (mybestCase == e->getahCase())
 			{
 				e->refill(e->getWarriors()[i]);
 			}
 			//std::cout << "la meilleure case : " << mybestCase << std::endl;
-
 			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
 			switch (squares[caseWarrior]->getType())
@@ -242,7 +240,7 @@ bool field::checkLivingAnt()
 }
 int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 {
-	int best, counter = 0, emptyTab[8] = {0}, FoodCase = 0, anthillCase = 0;
+	int best = 0, counter = 0, emptyTab[8] = {0}, FoodCase = 0, anthillCase = 0;
 	int caseCheck[8];
 	caseCheck[0] = caseWarrior - 1;
 	caseCheck[1] = caseWarrior + 1;
@@ -273,7 +271,7 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		switch (squares[caseCheck[i]]->getType())
 		{
 		case TypeSquare::Empty:
-			if ((myWarrior->lastCase() != 1) && caseCheck[i] == myWarrior->lastCase())
+			if ((myWarrior->lastCase() != 1) && (caseCheck[i] == myWarrior->lastCase()))
 			{
 				break; // on ne retient pas la dernière case empruntée
 			}
@@ -314,6 +312,7 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		myWarrior->deleteLast(); //Delete la dernière case de son chemin
 		if (anthillCase != 0)
 		{
+			myWarrior->deleteAll();
 			best = anthillCase;
 		}
 		else

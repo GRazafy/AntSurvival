@@ -45,10 +45,10 @@ void warrior::getFood(square *e)
 
 bool warrior::getfood_state()
 {
+	bool test = false;
 	if (this->food_capacity == this->food_quantity)
-		return true;
-	else
-		return false;
+		test = true;
+	return test;
 }
 
 void warrior::addCase(int bestCase)
@@ -57,7 +57,7 @@ void warrior::addCase(int bestCase)
 }
 int warrior::lastCase()
 {
-	if (path.empty())
+	if (path.empty() == true)
 		return 1;
 	else
 		return path.back();
@@ -65,6 +65,10 @@ int warrior::lastCase()
 void warrior::deleteLast()
 {
 	path.pop_back();
+}
+void warrior::deleteAll()
+{
+	path.clear();
 }
 int warrior::foodDeposit()
 {

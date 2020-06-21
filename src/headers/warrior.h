@@ -28,6 +28,7 @@ public:
     void deleteLast();
     void getFood(square *e);
     int foodDeposit();
+    void deleteAll();
     void printStateLog();
 };
 
