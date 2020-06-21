@@ -17,17 +17,17 @@ int queen::layEggs()
 	if (food_level >= food_for_birth)
 	{
 
-		food_level -= food_for_birth;
-
 		if (this->remainingRoom() > this->litter)
 		{
 			std::cout << "The queen is laying " << litter << " eggs" << std::endl;
+			food_level -= food_for_birth;
 			current_eggs += litter;
 			return litter;
 		}
 		else
 		{
 			std::cout << "The queen is laying " << this->remainingRoom() << " eggs" << std::endl;
+			food_level -= food_for_birth;
 			current_eggs += this->remainingRoom();
 			return this->remainingRoom();
 		}
@@ -35,6 +35,20 @@ int queen::layEggs()
 	else
 	{
 		std::cout << "The queen is too hungry to lay eggs ..." << std::endl;
+		return 0;
+	}
+}
+
+int queen::feedQueen(int food_quantity)
+{
+	if (food_quantity > (food_maximum - food_level))
+	{
+		food_level = food_maximum;
+		return food_maximum - food_level;
+	}
+	else
+	{
+		food_level += food_quantity;
 		return 0;
 	}
 }
@@ -56,7 +70,7 @@ int queen::getAge()
 
 void queen::endTurn()
 {
-	food_level -= 5;
+	food_level -= 2;
 	age += 1;
 }
 

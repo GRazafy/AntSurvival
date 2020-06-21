@@ -31,8 +31,11 @@ public:
 	bool checkLivingAnt();
 	void refill(warrior *myWarrior);
 	void layEggs();
-	void printStateLog();
+	void feedAnt();
 	int getahCase();
+
+	void printStateLog();
+
 	void remove(warrior *e);
 	std::vector<warrior *> getWarriors();
 };

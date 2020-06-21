@@ -157,13 +157,22 @@ void field::drawContainer(sf::RenderWindow &window)
 	}
 }
 
+void field::feedAnt()
+{
+	for (anthill *e : anthills)
+	{
+		e->feedAnt();
+	}
+}
+
 void field::move()
 {
 	int xwarrior;
 	int ywarrior;
 	int caseWarrior;
 	int mybestCase;
-	bool fullFood;
+	bool fullFood = false;
+
 	for (anthill *e : anthills)
 	{
 		for (int i = 0; i < e->getWarriors().size(); i++)

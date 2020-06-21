@@ -65,10 +65,10 @@ void warrior::deleteLast()
 }
 int warrior::foodDeposit()
 {
-	//std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
 	int tmp = food_quantity;
 	food_quantity = 0;
-	//std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
 	return tmp;
 }
 void warrior::printStateLog()

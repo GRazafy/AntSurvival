@@ -35,6 +35,7 @@ public:
 	void printStateLog();
 
 	void layEggs();
+	void feedAnt();
 
 	field();
 	field(std::string nameFile);

@@ -18,6 +18,8 @@ public:
     int layEggs();
     int getAge();
     void endTurn();
+
+    int feedQueen(int food_quantity);
     bool thresholdReached();
     int remainingRoom();
     void printStateLog();

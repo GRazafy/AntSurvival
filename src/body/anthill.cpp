@@ -81,8 +81,11 @@ std::vector<warrior *> anthill::getWarriors()
 
 void anthill::refill(warrior *myWarrior)
 {
+	std::cout << "An ant is giving food to the anthill" << std::endl;
 	int quantity = myWarrior->foodDeposit();
+	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
 	food_quantity += quantity;
+	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
 }
 
 void anthill::layEggs()
@@ -125,4 +128,13 @@ void anthill::printStateLog()
 int anthill::getahCase()
 {
 	return ahCase;
+}
+
+void anthill::feedAnt()
+{
+	food_quantity = _queen->feedQueen(food_quantity);
+	for (worker *e : workers)
+	{
+		food_quantity = e->feedWorker(food_quantity);
+	}
 }

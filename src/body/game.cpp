@@ -24,6 +24,7 @@ void game::run()
 		}
 
 		myField->move();
+		myField->feedAnt();
 		myField->layEggs();
 
 		//TODO feed ant in the anthill
