@@ -21,7 +21,7 @@ private:
 	queen *_queen;
 	std::vector<warrior *> warriors;
 	std::vector<worker *> workers;
-	pre_natal *pre_natals[10];
+	std::vector<pre_natal *> pre_natals;
 
 	//pheromone
 public:
