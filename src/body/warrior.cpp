@@ -40,6 +40,7 @@ void warrior::getFood(square *e)
 	if (e->getFood() == 0)
 	{
 		e->setType(TypeSquare::Empty);
+		e->setRectangle(sf::Color(255, 255, 255));
 	}
 }
 

@@ -201,7 +201,7 @@ void field::move()
 				squares[caseWarrior]->setRectangle(sf::Color(0, 0, 0));
 				break;
 			case TypeSquare::Food:
-				squares[caseWarrior]->setRectangle(sf::Color(255, 255, 255));
+				squares[caseWarrior]->setRectangle(sf::Color(255, 50, 50));
 				e->getWarriors()[i]->getFood(squares[caseWarrior]);
 				break;
 			case TypeSquare::Anthill:

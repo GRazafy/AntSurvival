@@ -7,7 +7,7 @@ anthill::anthill()
 	workers = std::vector<worker *>();
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
+	//warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
@@ -27,6 +27,10 @@ anthill::~anthill()
 	}
 
 	for (ant *e : workers)
+	{
+		delete e;
+	}
+	for (pre_natal *e : pre_natals)
 	{
 		delete e;
 	}
@@ -96,15 +100,24 @@ void anthill::layEggs()
 	}
 	else
 	{
+		std::cout << "*********************   The Queen is laying eggs  ******************" << std::endl;
 		int numberToLay = _queen->layEggs();
+		std::cout << "She need to lay : " << numberToLay << std::endl;
+		int counter = current_pre_natals;
+		std::cout << "current pre_natals in the anthill : " << current_pre_natals << std::endl;
 		if (numberToLay != 0)
 		{
-			for (int i = current_pre_natals; i < numberToLay; i++)
+			std::cout << "Loop to add eggs : " << current_pre_natals << std::endl;
+			for (int i = counter; i < numberToLay + counter; i++)
 			{
+
 				pre_natals.push_back(new egg());
+
 				current_pre_natals++;
+				std::cout << "current pre_natals in the anthill : " << current_pre_natals << std::endl;
 			}
 		}
+		std::cout << "***************************************************************************" << std::endl;
 	}
 }
 
