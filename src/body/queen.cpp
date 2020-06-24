@@ -4,7 +4,7 @@ queen::queen() : food_for_birth(10), threshold_egg(10), litter(5), current_eggs(
 {
 	max_age = 400;
 	age = 30;
-	food_level = 60;
+	food_level = 100;
 	food_maximum = 100;
 }
 
@@ -45,8 +45,9 @@ int queen::feedQueen(int food_quantity)
 {
 	if (food_quantity > (food_maximum - food_level))
 	{
+		int tmp = food_maximum - food_level;
 		food_level = food_maximum;
-		return food_maximum - food_level;
+		return food_quantity - tmp;
 	}
 	else
 	{

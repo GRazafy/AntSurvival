@@ -10,6 +10,7 @@ public:
     worker();
     ~worker();
     int feedWorker(int food_quantity);
+    void printStateLog();
 };
 
 #endif // WARRIOR_H_

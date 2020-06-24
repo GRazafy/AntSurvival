@@ -9,6 +9,7 @@ warrior::warrior() : food_capacity(50), food_quantity(0)
 	food_maximum = 20;
 	id = ++nextID;
 	last_food_square = nullptr;
+	path = std::vector<int>();
 }
 
 warrior::~warrior()
@@ -46,10 +47,10 @@ void warrior::getFood(square *e)
 
 bool warrior::getfood_state()
 {
+	bool test = false;
 	if (this->food_capacity == this->food_quantity)
-		return true;
-	else
-		return false;
+		test = true;
+	return test;
 }
 
 void warrior::addCase(int bestCase)
@@ -58,8 +59,8 @@ void warrior::addCase(int bestCase)
 }
 int warrior::lastCase()
 {
-	if (path.empty())
-		return 1;
+	if (path.empty() == true)
+		return false;
 	else
 		return path.back();
 }
@@ -67,12 +68,17 @@ void warrior::deleteLast()
 {
 	path.pop_back();
 }
+void warrior::deleteAll()
+{
+	path.clear();
+}
 int warrior::foodDeposit()
 {
 	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
-	int tmp = food_quantity;
-	food_quantity = 0;
-	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	int tmp = this->food_quantity;
+	this->food_quantity = 0;
+	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl
+			  << " et donc le fullfood est à : " << getfood_state() << std::endl;
 	return tmp;
 }
 void warrior::printStateLog()

@@ -7,14 +7,14 @@ anthill::anthill()
 	workers = std::vector<worker *>();
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
-	//warriors.push_back(new warrior());
+	// warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
 	// warriors.push_back(new warrior());
 	workers.push_back(new worker());
 
-	food_capacity = 2000;
-	food_quantity = 250;
+	this->food_capacity = 2000;
+	this->food_quantity = 1000;
 	current_pre_natals = 0;
 }
 
@@ -87,9 +87,9 @@ void anthill::refill(warrior *myWarrior)
 {
 	std::cout << "An ant is giving food to the anthill" << std::endl;
 	int quantity = myWarrior->foodDeposit();
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
-	food_quantity += quantity;
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
+	std::cout << "quantité dans la fourmilière " << this->food_quantity << std::endl;
+	this->food_quantity += quantity;
+	std::cout << "quantité dans la fourmilière " << this->food_quantity << std::endl;
 }
 
 void anthill::layEggs()
@@ -129,14 +129,14 @@ void anthill::printStateLog()
 		e->printStateLog();
 	}
 
-	for (ant *e : workers)
+	for (worker *e : workers)
 	{
 		e->printStateLog();
 	}
 
 	std::cout << "Anthill: " << std::endl;
 	std::cout << "       number of  pre_natals: " << current_pre_natals << std::endl;
-	std::cout << "       current food         :" << food_quantity << std::endl;
+	std::cout << "       current food         :" << food_quantity << "/" << food_capacity << std::endl;
 }
 int anthill::getahCase()
 {

@@ -119,8 +119,9 @@ int square::feedAnt(int current_food, int food_max)
 		}
 		else
 		{
+			int tmp = foodInSquare;
 			foodInSquare = 0;
-			return foodInSquare + current_food;
+			return tmp + current_food;
 		}
 	}
 }
