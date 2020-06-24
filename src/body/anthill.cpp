@@ -83,9 +83,9 @@ void anthill::refill(warrior *myWarrior)
 {
 	std::cout << "An ant is giving food to the anthill" << std::endl;
 	int quantity = myWarrior->foodDeposit();
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
-	food_quantity += quantity;
-	std::cout << "quantité dans la fourmilière " << food_quantity << std::endl;
+	std::cout << "quantité dans la fourmilière " << this->food_quantity << std::endl;
+	this->food_quantity += quantity;
+	std::cout << "quantité dans la fourmilière " << this->food_quantity << std::endl;
 }
 
 void anthill::layEggs()

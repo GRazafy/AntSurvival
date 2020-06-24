@@ -181,15 +181,17 @@ void field::move()
 			ywarrior = e->getWarriors()[i]->getY();
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
-			std::cout << " fullfod = " << fullFood << std::endl;
+			std::cout << " fullfood = " << fullFood << std::endl;
 			mybestCase = bestCase(caseWarrior, fullFood, e->getWarriors()[i]);
 			if (mybestCase == e->getahCase())
 			{
 				e->refill(e->getWarriors()[i]);
+				fullFood = e->getWarriors()[i]->getfood_state();
+				std::cout << "ET DONC  fullfood = " << fullFood << std::endl;
 			}
 			//std::cout << "la meilleure case : " << mybestCase << std::endl;
-			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 
+			e->getWarriors()[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 			switch (squares[caseWarrior]->getType())
 			{
 			case TypeSquare::Empty:
@@ -271,7 +273,7 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		switch (squares[caseCheck[i]]->getType())
 		{
 		case TypeSquare::Empty:
-			if ((myWarrior->lastCase() != 1) && (caseCheck[i] == myWarrior->lastCase()))
+			if ((myWarrior->lastCase() != false) && (caseCheck[i] == myWarrior->lastCase()))
 			{
 				break; // on ne retient pas la dernière case empruntée
 			}
@@ -319,6 +321,10 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		{
 			best = myWarrior->lastCase(); //Montre la dernière case du vector
 		}
+	}
+	if (best > 4999 && best < 0)
+	{
+		std::cout << "oupsi probleme" << std::endl;
 	}
 	return best;
 }
