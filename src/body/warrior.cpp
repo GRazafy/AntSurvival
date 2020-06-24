@@ -66,11 +66,13 @@ int warrior::lastCase()
 }
 void warrior::deleteLast()
 {
-	path.pop_back();
+	if (!path.empty())
+		path.pop_back();
 }
 void warrior::deleteAll()
 {
-	path.clear();
+	if (!path.empty())
+		path.clear();
 }
 int warrior::foodDeposit()
 {

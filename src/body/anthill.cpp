@@ -1,16 +1,18 @@
 #include "../headers/anthill.h"
 
-anthill::anthill()
+anthill::anthill(int ahcase)
 {
-	ahCase = 2525;
+	this->ahCase = ahcase;
 	warriors = std::vector<warrior *>();
 	workers = std::vector<worker *>();
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
-	// warriors.push_back(new warrior());
-	// warriors.push_back(new warrior());
-	// warriors.push_back(new warrior());
-	// warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
+	warriors.push_back(new warrior());
 	workers.push_back(new worker());
 
 	this->food_capacity = 2000;

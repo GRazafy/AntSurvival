@@ -1,7 +1,7 @@
 #include "../headers/field.h"
 field::field()
 {
-	anthill *acrobat = new anthill();
+	anthill *acrobat = new anthill(2525);
 	anthills.push_back(acrobat);
 }
 
@@ -178,18 +178,17 @@ void field::move()
 
 		for (int i = 0; i < warriors.size(); i++)
 		{
+			int hisAnthill = e->getahCase();
 			fullFood = warriors[i]->getfood_state();
 			xwarrior = warriors[i]->getX();
 			ywarrior = warriors[i]->getY();
 			caseWarrior = xwarrior * width + ywarrior;
 			//check des alentours
-			std::cout << " fullfood = " << fullFood << std::endl;
-			mybestCase = bestCase(caseWarrior, fullFood, warriors[i]);
-			if (mybestCase == e->getahCase())
+			mybestCase = bestCase(caseWarrior, fullFood, warriors[i], hisAnthill);
+			if (mybestCase == hisAnthill)
 			{
 				e->refill(warriors[i]);
 				fullFood = warriors[i]->getfood_state();
-				std::cout << "ET DONC  fullfood = " << fullFood << std::endl;
 			}
 			//std::cout << "la meilleure case : " << mybestCase << std::endl;
 
@@ -247,7 +246,7 @@ bool field::checkLivingAnt()
 
 	return allAntDead;
 }
-int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
+int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior, int hisAnthill)
 {
 	int best = 0, counter = 0, emptyTab[8] = {0}, FoodCase = 0, anthillCase = 0;
 	int caseCheck[8];
@@ -319,7 +318,7 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 	else
 	{
 		myWarrior->deleteLast(); //Delete la dernière case de son chemin
-		if (anthillCase != 0)
+		if (anthillCase != 0 && anthillCase == hisAnthill)
 		{
 			myWarrior->deleteAll();
 			best = anthillCase;
@@ -328,10 +327,6 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior)
 		{
 			best = myWarrior->lastCase(); //Montre la dernière case du vector
 		}
-	}
-	if (best > 4999 && best < 0)
-	{
-		std::cout << "oupsi probleme" << std::endl;
 	}
 	return best;
 }
