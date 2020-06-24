@@ -36,6 +36,7 @@ public:
 
 	void layEggs();
 	void feedAnt();
+	void circleOfLife();
 
 	field();
 	field(std::string nameFile);

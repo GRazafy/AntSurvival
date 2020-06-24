@@ -36,13 +36,35 @@ anthill::~anthill()
 	}
 }
 
-void anthill::remove(warrior *e)
+void anthill::removeWarrior(warrior *e)
 {
 	for (std::vector<warrior *>::iterator i = warriors.begin(); i != warriors.end(); ++i)
 	{
 		if (*i == e)
 		{
 			warriors.erase(i--);
+		}
+	}
+}
+
+void anthill::removeWorker(worker *e)
+{
+	for (std::vector<worker *>::iterator i = workers.begin(); i != workers.end(); ++i)
+	{
+		if (*i == e)
+		{
+			workers.erase(i--);
+		}
+	}
+}
+
+void anthill::removePreNatal(pre_natal *e)
+{
+	for (std::vector<pre_natal *>::iterator i = pre_natals.begin(); i != pre_natals.end(); ++i)
+	{
+		if (*i == e)
+		{
+			pre_natals.erase(i--);
 		}
 	}
 }
@@ -57,7 +79,17 @@ bool anthill::checkLife()
 		if (e->endFood() || e->ageMax())
 		{
 			std::cout << "a Warrior is dead..." << std::endl;
-			remove(e);
+			removeWarrior(e);
+			delete e;
+		}
+	}
+	for (worker *e : workers)
+	{
+		e->endTurn();
+		if (e->endFood() || e->ageMax())
+		{
+			std::cout << "a Worker is dead..." << std::endl;
+			removeWorker(e);
 			delete e;
 		}
 	}
@@ -70,7 +102,7 @@ bool anthill::checkLife()
 		delete _queen;
 	}
 
-	return warriors.empty() || queenDead;
+	return workers.empty() && warriors.empty() || queenDead; //true = end of the anthills
 }
 
 bool anthill::checkLivingAnt()
@@ -100,24 +132,18 @@ void anthill::layEggs()
 	}
 	else
 	{
-		std::cout << "*********************   The Queen is laying eggs  ******************" << std::endl;
 		int numberToLay = _queen->layEggs();
-		std::cout << "She need to lay : " << numberToLay << std::endl;
 		int counter = current_pre_natals;
-		std::cout << "current pre_natals in the anthill : " << current_pre_natals << std::endl;
 		if (numberToLay != 0)
 		{
-			std::cout << "Loop to add eggs : " << current_pre_natals << std::endl;
 			for (int i = counter; i < numberToLay + counter; i++)
 			{
 
 				pre_natals.push_back(new egg());
 
 				current_pre_natals++;
-				std::cout << "current pre_natals in the anthill : " << current_pre_natals << std::endl;
 			}
 		}
-		std::cout << "***************************************************************************" << std::endl;
 	}
 }
 
@@ -149,5 +175,36 @@ void anthill::feedAnt()
 	for (worker *e : workers)
 	{
 		food_quantity = e->feedWorker(food_quantity);
+	}
+}
+
+void anthill::circleOfLife()
+{
+	for (worker *e : workers)
+	{
+		if (e->maturityAttain())
+		{
+			warriors.push_back(new warrior());
+			delete e;
+		}
+	}
+	for (int i = 0; i < pre_natals.size(); i++)
+	{
+		if (pre_natals[i]->maturityAttain())
+		{
+			switch (pre_natals[i]->type_pre_natal())
+			{
+			case 1: // case larva
+				workers.push_back(new worker());
+				removePreNatal(pre_natals[i]);
+				break;
+			case 2: //case egg
+				pre_natals[i] = new larva();
+				break;
+
+			default:
+				break;
+			}
+		}
 	}
 }

@@ -6,6 +6,7 @@
 #include "worker.h"
 #include "pre_natal.h"
 #include "egg.h"
+#include "larva.h"
 #include <iostream>
 #include <vector>
 
@@ -35,8 +36,11 @@ public:
 	int getahCase();
 
 	void printStateLog();
+	void circleOfLife();
 
-	void remove(warrior *e);
+	void removeWarrior(warrior *e);
+	void removeWorker(worker *e);
+	void removePreNatal(pre_natal *e);
 	std::vector<warrior *> getWarriors();
 };
 

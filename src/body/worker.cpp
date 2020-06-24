@@ -32,3 +32,8 @@ void worker::printStateLog()
 	std::cout << "       current food             : " << food_level << std::endl;
 	std::cout << "       current age              : " << age << std::endl;
 }
+
+bool worker::maturityAttain()
+{
+	return age == ageForWarrior;
+}

@@ -223,7 +223,12 @@ bool field::checkLife()
 	bool allAntDead = true;
 	for (anthill *e : anthills)
 	{
-		allAntDead = allAntDead && e->checkLife();
+		bool antHillEnd = e->checkLife();
+		allAntDead = allAntDead && antHillEnd;
+		if (antHillEnd)
+		{
+			delete e;
+		}
 	}
 	return allAntDead;
 }
@@ -336,6 +341,14 @@ void field::layEggs()
 	for (anthill *e : anthills)
 	{
 		e->layEggs();
+	}
+}
+
+void field::circleOfLife()
+{
+	for (anthill *e : anthills)
+	{
+		e->circleOfLife();
 	}
 }
 
