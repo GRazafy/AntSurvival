@@ -25,7 +25,7 @@ private:
 
 	//pheromone
 public:
-	anthill();
+	anthill(int ahcase);
 	~anthill();
 	bool checkLife();
 	bool checkLivingAnt();
