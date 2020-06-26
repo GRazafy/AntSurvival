@@ -217,6 +217,14 @@ void field::move()
 	}
 }
 
+void field::endTurn()
+{
+	for (anthill *e : anthills)
+	{
+		e->endTurn();
+	}
+}
+
 bool field::checkLife()
 {
 	bool allAntDead = true;
@@ -248,16 +256,12 @@ bool field::checkLivingAnt()
 }
 int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior, int hisAnthill)
 {
-	int best = 0, counter = 0, emptyTab[8] = {0}, FoodCase = 0, anthillCase = 0;
-	int caseCheck[8];
+	int best = 0, counter = 0, emptyTab[4] = {0}, FoodCase = 0, anthillCase = 0;
+	int caseCheck[4];
 	caseCheck[0] = caseWarrior - 1;
 	caseCheck[1] = caseWarrior + 1;
 	caseCheck[2] = caseWarrior - 50;
 	caseCheck[3] = caseWarrior + 50;
-	caseCheck[4] = caseWarrior - 51;
-	caseCheck[5] = caseWarrior - 49;
-	caseCheck[6] = caseWarrior + 51;
-	caseCheck[7] = caseWarrior + 49;
 	for (int i = 0; i < 8; i++)
 	{
 		if (caseWarrior % 50 == 0 && caseCheck[i] % 49 == 0)
@@ -328,6 +332,10 @@ int field::bestCase(int caseWarrior, bool fullFood, warrior *myWarrior, int hisA
 			best = myWarrior->lastCase(); //Montre la dernière case du vector
 		}
 	}
+	if (best == 0)
+	{
+		std::cout << "AAAHh";
+	}
 	return best;
 }
 
@@ -353,4 +361,8 @@ void field::printStateLog()
 	{
 		e->printStateLog();
 	}
+}
+
+void field::randomFoodSquare()
+{
 }

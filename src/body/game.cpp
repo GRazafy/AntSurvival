@@ -11,6 +11,8 @@ void game::run()
 	int counter = 0;
 	while (window.isOpen() && !finGame)
 	{
+		myField->endTurn();
+
 		counter += 1;
 		std::cout << "Tour n° : " << counter << std::endl;
 		sf::Event event;
@@ -28,10 +30,10 @@ void game::run()
 		myField->circleOfLife();
 		myField->layEggs();
 
-		//TODO circle of life (workers to warriors and pre_natal ants)
 		//TODO change the field ?
-		finGame = myField->checkLife();
 
+		finGame = myField->checkLife();
+		//myField->randomFoodSquare();
 		myField->printStateLog();
 
 		window.clear();

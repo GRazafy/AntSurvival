@@ -39,6 +39,7 @@ public:
 
 	void printStateLog();
 	void circleOfLife();
+	void endTurn();
 
 	void removeWarrior(warrior *e);
 	void removeWorker(worker *e);

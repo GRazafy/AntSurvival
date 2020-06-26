@@ -5,8 +5,8 @@ int warrior::nextID = 0; //id of the ant
 warrior::warrior() : food_capacity(50), food_quantity(0)
 {
 	age = 20; // a warrior is 20;
-	food_level = 15;
-	food_maximum = 20;
+	food_level = 25;
+	food_maximum = 40;
 	id = ++nextID;
 	last_food_square = nullptr;
 	path = std::vector<int>();
@@ -74,11 +74,27 @@ void warrior::deleteAll()
 	if (!path.empty())
 		path.clear();
 }
+int warrior::feedWarrior()
+{
+	if (food_quantity > (food_maximum - food_level))
+	{
+		int tmp = food_maximum - food_level;
+		food_level = food_maximum;
+		return food_quantity - tmp;
+	}
+	else
+	{
+		food_level += food_quantity;
+		return 0;
+	}
+}
 int warrior::foodDeposit()
 {
 	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl;
+	this->food_quantity = feedWarrior();
 	int tmp = this->food_quantity;
 	this->food_quantity = 0;
+
 	std::cout << "quantité de nourriture de fourmis: " << food_quantity << std::endl
 			  << " et donc le fullfood est à : " << getfood_state() << std::endl;
 	return tmp;

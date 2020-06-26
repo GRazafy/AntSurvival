@@ -2,7 +2,7 @@
 
 queen::queen() : food_for_birth(10), litter(5), current_eggs(0)
 {
-	max_age = 400;
+	max_age = 200;
 	age = 30;
 	food_level = 100;
 	food_maximum = 100;

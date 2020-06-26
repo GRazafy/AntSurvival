@@ -38,6 +38,9 @@ public:
 	void feedAnt();
 	void circleOfLife();
 
+	void endTurn();
+	void randomFoodSquare();
+
 	field();
 	field(std::string nameFile);
 	~field();

@@ -30,6 +30,7 @@ public:
     int foodDeposit();
     void deleteAll();
     void printStateLog();
+    int feedWarrior();
 };
 
 #endif // WARRIOR_H_
