@@ -7,7 +7,6 @@ class queen : public ant
 {
 private:
     int food_for_birth; // food required to lay eggs
-    int threshold_egg;  //number max of current eggs
     int current_eggs;   //number of current eggs
     int litter;         //number of eggs by turn maximum
 
@@ -23,6 +22,9 @@ public:
     bool thresholdReached();
     int remainingRoom();
     void printStateLog();
+    void decreaseEggs();
+
+    static const int threshold_egg = 10;
 };
 
 #endif // QUEEN_H_

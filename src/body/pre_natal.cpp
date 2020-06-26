@@ -14,8 +14,17 @@ bool pre_natal::maturityAttain()
         std::cout << "THIS SHOULDN'T APPEAR" << std::endl;
 }
 
+void pre_natal::endTurn()
+{
+        maturity++;
+}
+
 int pre_natal::type_pre_natal()
 {
         std::cout << "THIS SHOULDN'T APPEAR" << std::endl;
         return -1;
+}
+int pre_natal::getMaturity()
+{
+        return maturity;
 }

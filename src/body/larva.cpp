@@ -2,7 +2,8 @@
 
 larva::larva()
 {
-	maturity = 0;
+	maturity = 5;
+	typePreNatal = TypePreNatal::LARVA;
 }
 
 larva::~larva()
@@ -16,5 +17,5 @@ bool larva::maturityAttain()
 
 int larva::type_pre_natal()
 {
-	return 1;
+	return typePreNatal;
 }

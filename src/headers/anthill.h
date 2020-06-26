@@ -7,8 +7,10 @@
 #include "pre_natal.h"
 #include "egg.h"
 #include "larva.h"
+
 #include <iostream>
 #include <vector>
+#include <list>
 
 class anthill
 {
@@ -22,7 +24,7 @@ private:
 	queen *_queen;
 	std::vector<warrior *> warriors;
 	std::vector<worker *> workers;
-	std::vector<pre_natal *> pre_natals;
+	std::array<pre_natal *, queen::threshold_egg> pre_natals;
 
 	//pheromone
 public:
@@ -40,7 +42,6 @@ public:
 
 	void removeWarrior(warrior *e);
 	void removeWorker(worker *e);
-	void removePreNatal(pre_natal *e);
 	std::vector<warrior *> getWarriors();
 };
 

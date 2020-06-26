@@ -1,6 +1,6 @@
 #include "../headers/queen.h"
 
-queen::queen() : food_for_birth(10), threshold_egg(10), litter(5), current_eggs(0)
+queen::queen() : food_for_birth(10), litter(5), current_eggs(0)
 {
 	max_age = 400;
 	age = 30;
@@ -36,7 +36,14 @@ int queen::layEggs()
 	}
 	else
 	{
-		std::cout << "The queen is too hungry to lay eggs ..." << std::endl;
+		if (remainingRoom == 0)
+		{
+			std::cout << "No more place to lay eggs" << std::endl;
+		}
+		else
+		{
+			std::cout << "The queen is too hungry to lay eggs ..." << std::endl;
+		}
 		return 0;
 	}
 }
@@ -83,4 +90,9 @@ void queen::printStateLog()
 	std::cout << "       current eggs: " << current_eggs << std::endl;
 	std::cout << "       current food: " << food_level << std::endl;
 	std::cout << "       current age : " << age << std::endl;
+}
+
+void queen::decreaseEggs()
+{
+	current_eggs--;
 }

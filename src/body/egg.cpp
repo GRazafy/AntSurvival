@@ -3,6 +3,7 @@
 egg::egg()
 {
 	maturity = 0;
+	typePreNatal = TypePreNatal::EGG;
 }
 
 egg::~egg()
@@ -16,5 +17,5 @@ bool egg::maturityAttain()
 
 int egg::type_pre_natal()
 {
-	return 2;
+	return typePreNatal;
 }

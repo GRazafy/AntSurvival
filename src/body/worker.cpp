@@ -35,5 +35,5 @@ void worker::printStateLog()
 
 bool worker::maturityAttain()
 {
-	return age == ageForWarrior;
+	return age >= ageForWarrior;
 }

@@ -5,14 +5,10 @@ anthill::anthill(int ahcase)
 	this->ahCase = ahcase;
 	warriors = std::vector<warrior *>();
 	workers = std::vector<worker *>();
+	pre_natals = std::array<pre_natal *, queen::threshold_egg>();
 	this->_queen = new queen();
 	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
-	warriors.push_back(new warrior());
+	//warriors.push_back(new warrior());
 	workers.push_back(new worker());
 
 	this->food_capacity = 2000;
@@ -32,9 +28,12 @@ anthill::~anthill()
 	{
 		delete e;
 	}
-	for (pre_natal *e : pre_natals)
+	for (int i = 0; i < current_pre_natals; i++)
 	{
-		delete e;
+		if (pre_natals[i] == nullptr)
+		{
+			delete pre_natals[i];
+		}
 	}
 }
 
@@ -56,17 +55,6 @@ void anthill::removeWorker(worker *e)
 		if (*i == e)
 		{
 			workers.erase(i--);
-		}
-	}
-}
-
-void anthill::removePreNatal(pre_natal *e)
-{
-	for (std::vector<pre_natal *>::iterator i = pre_natals.begin(); i != pre_natals.end(); ++i)
-	{
-		if (*i == e)
-		{
-			pre_natals.erase(i--);
 		}
 	}
 }
@@ -93,6 +81,14 @@ bool anthill::checkLife()
 			std::cout << "a Worker is dead..." << std::endl;
 			removeWorker(e);
 			delete e;
+		}
+	}
+
+	for (int i = 0; i < current_pre_natals; i++)
+	{
+		if (pre_natals[i] != nullptr)
+		{
+			pre_natals[i]->endTurn();
 		}
 	}
 
@@ -136,15 +132,21 @@ void anthill::layEggs()
 	{
 		int numberToLay = _queen->layEggs();
 		int counter = current_pre_natals;
+		int i = 0;
+		int j = 0;
 		if (numberToLay != 0)
 		{
-			for (int i = counter; i < numberToLay + counter; i++)
+			while (i < numberToLay && j < queen::threshold_egg)
 			{
-
-				pre_natals.push_back(new egg());
-
-				current_pre_natals++;
+				if (pre_natals[j] == nullptr)
+				{
+					pre_natals[j] = new egg();
+					current_pre_natals++;
+					i++;
+				}
+				j++;
 			}
+			i = 0;
 		}
 	}
 }
@@ -164,6 +166,32 @@ void anthill::printStateLog()
 
 	std::cout << "Anthill: " << std::endl;
 	std::cout << "       number of  pre_natals: " << current_pre_natals << std::endl;
+	for (int i = 0; i < current_pre_natals; i++)
+	{
+		if (pre_natals[i] != nullptr)
+		{
+			std::cout << "       Pre_natal: " << std::endl;
+			switch (pre_natals[i]->type_pre_natal())
+			{
+			case TypePreNatal::LARVA: // case larva
+			{
+
+				std::cout << "       type: LARVA" << std::endl;
+				break;
+			}
+			case TypePreNatal::EGG: //case egg
+			{
+
+				std::cout << "       type: EGG" << std::endl;
+				break;
+			}
+			default:
+				break;
+			}
+
+			std::cout << "       maturity:" << pre_natals[i]->getMaturity() << std::endl;
+		}
+	}
 	std::cout << "       current food         :" << food_quantity << "/" << food_capacity << std::endl;
 }
 int anthill::getahCase()
@@ -187,25 +215,36 @@ void anthill::circleOfLife()
 		if (e->maturityAttain())
 		{
 			warriors.push_back(new warrior());
+			removeWorker(e);
 			delete e;
 		}
 	}
-	for (int i = 0; i < pre_natals.size(); i++)
+	for (int i = 0; i < current_pre_natals; i++)
 	{
-		if (pre_natals[i]->maturityAttain())
+		if (pre_natals[i] != nullptr)
 		{
-			switch (pre_natals[i]->type_pre_natal())
+			if (pre_natals[i]->maturityAttain())
 			{
-			case 1: // case larva
-				workers.push_back(new worker());
-				removePreNatal(pre_natals[i]);
-				break;
-			case 2: //case egg
-				pre_natals[i] = new larva();
-				break;
-
-			default:
-				break;
+				switch (pre_natals[i]->type_pre_natal())
+				{
+				case TypePreNatal::LARVA: // case larva
+				{
+					workers.push_back(new worker());
+					delete pre_natals[i];
+					pre_natals[i] = nullptr;
+					//_queen->decreaseEggs();
+					break;
+				}
+				case TypePreNatal::EGG: //case egg
+				{
+					pre_natal *tmp = pre_natals[i];
+					pre_natals[i] = new larva();
+					delete tmp;
+					break;
+				}
+				default:
+					break;
+				}
 			}
 		}
 	}
