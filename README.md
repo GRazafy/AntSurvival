@@ -10,7 +10,7 @@ Fourmilière :
 
 Cycle de la vie :
 -Alimentation des fourmis et prénatales avec la nourriture stockée dans la fourmilière.
--« Evolution » selon la maturité : prénatal(ŒufLarve)fourmi(OuvrièreGuerrière)
+-« Evolution » selon la maturité : prénatal(Œuf->Larve)->fourmi(Ouvrière->Guerrière)
 
 Reine :
 -Pont des œufs
