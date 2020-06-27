@@ -1,38 +1,44 @@
 # AntSurvival
 LP73 Project of Rousseaux Thibaut and Razafindratsima Gabriel
-Fourmilière:
--Créée au centre (1 case?)
+
+Rapport de projet : 
+
+Voici ci-dessous les objectifs complets de ce projet :
+Fourmilière :
+-Créée au centre 
 -Consommation de nourriture pour création de fourmis, survie des fourmis
 
-Reine:
--Pont des oeufs
--Proba que la reine ponde une reine, + de chance si fourmilière est full
--Maturité de guerrière -> se barre avec quelques guerriers
+Cycle de la vie :
+-Alimentation des fourmis et prénatales avec la nourriture stockée dans la fourmilière.
+-« Evolution » selon la maturité : prénatal(Œuf->Larve)->fourmi(Ouvrière->Guerrière)
 
-Ouvrière:
--amenager fourmilière et s'ocupper des oeufs
+Reine :
+-Pont des œufs
+-Probabilité que la reine ponde une reine, plus de chance si la fourmilière est full, puis à maturité de guerrière, cette reine part créer une autre fourmilière
 
-Guerrière:
--Défendre la fourmilière
--Chercher nouriture
--Attaquer ennemi
--Attaquer fourmilière
+Ouvrière :
+-aménager la fourmilière et s'occuper des œufs
 
-Déplacement:
--Se déplacent en voyant les cellules adjacentes/aléatoirement, s'oriente vers nourriture et phéromones alliées. Evite les obstacles.*
--Dépose des phéromones. Phéromone déposée s'ajoute à phéromone existante(?)
--Visualiser les déplacements en mode texte
+Guerrière :
+-Chercher nourriture
+-Alimenter la fourmilière
+-Défendre la fourmilière 
 
-Phéromone:
--Temps d'expiration
--Est écrasée si une autre fourmis d'une autre fourmilière passe
--Ajoute temps d'expiration si fourmis de la meme fourmilière passe
+Déplacement :
+-Se déplacent en voyant les cellules adjacentes/aléatoirement, s'oriente vers nourriture et phéromones alliées. Evite les obstacles.
+-Dépose des phéromones. 
+-Visualisation des déplacements et changement d’états des cases.
 
-Cycle de fourmis: Ouvrière en premier
 
-Evolution du terrain:
+Phéromone :
+-Temps d'expiration (taux de 0.95%).
+-Est écrasée si une autre fourmi d'une autre fourmilière passe.
+-Ajout d’un temps d'expiration si une fourmi de la même fourmilière passe.
+
+Evolution du terrain :
 -Création d'obstacles, nourriture
 
 Map:
--Constitution aléatoire, taille (100x50), nouriture(500)/obstacle(1000)/vide avec fourmilière au centre, taux d'évap des phéromones (0.95).
+-Constitution aléatoire, taille (100x50), nourriture(500)/obstacle(1000)/vide avec fourmilière au centre.
+
 
