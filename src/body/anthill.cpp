@@ -10,6 +10,7 @@ anthill::anthill(int ahcase)
 	warriors.push_back(new warrior());
 	warriors.push_back(new warrior());
 	warriors.push_back(new warrior());
+
 	workers.push_back(new worker());
 
 	this->food_capacity = 2000;

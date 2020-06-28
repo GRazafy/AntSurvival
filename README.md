@@ -1,11 +1,19 @@
 # AntSurvival
 LP73 Project of Rousseaux Thibaut and Razafindratsima Gabriel
 
+<<<<<<< HEAD
 Rapport de projet :
 
 Voici ci-dessous les objectifs complets de ce projet :
 Fourmilière :
 -Créée au centre
+=======
+Rapport de projet : 
+
+Voici ci-dessous les objectifs complets de ce projet :
+Fourmilière :
+-Créée au centre 
+>>>>>>> 50a5694cc9a63cfd2f515bddede7f4b7a8008696
 -Consommation de nourriture pour création de fourmis, survie des fourmis
 
 Cycle de la vie :
@@ -18,6 +26,7 @@ Reine :
 
 Ouvrière :
 -aménager la fourmilière et s'occuper des œufs
+<<<<<<< HEAD
 
 Guerrière :
 -Chercher nourriture
@@ -35,6 +44,25 @@ Phéromone :
 -Est écrasée si une autre fourmi d'une autre fourmilière passe.
 -Ajout d’un temps d'expiration si une fourmi de la même fourmilière passe.
 
+=======
+
+Guerrière :
+-Chercher nourriture
+-Alimenter la fourmilière
+-Défendre la fourmilière 
+
+Déplacement :
+-Se déplacent en voyant les cellules adjacentes/aléatoirement, s'oriente vers nourriture et phéromones alliées. Evite les obstacles.
+-Dépose des phéromones. 
+-Visualisation des déplacements et changement d’états des cases.
+
+
+Phéromone :
+-Temps d'expiration (taux de 0.95%).
+-Est écrasée si une autre fourmi d'une autre fourmilière passe.
+-Ajout d’un temps d'expiration si une fourmi de la même fourmilière passe.
+
+>>>>>>> 50a5694cc9a63cfd2f515bddede7f4b7a8008696
 Evolution du terrain :
 -Création d'obstacles, nourriture
 
