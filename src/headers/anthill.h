@@ -8,9 +8,7 @@
 #include "egg.h"
 #include "larva.h"
 
-#include <iostream>
-#include <vector>
-#include <list>
+#include <array>
 
 class anthill
 {

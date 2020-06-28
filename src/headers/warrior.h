@@ -1,11 +1,9 @@
 #ifndef WARRIOR_H_ /* Include guard */
 #define WARRIOR_H_
 
-#include <vector>
-#include <iostream>
 #include "../headers/ant.h"
 #include "../headers/square.h"
-
+#include <vector>
 class warrior : public ant
 {
 private:

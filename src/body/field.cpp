@@ -190,7 +190,6 @@ void field::move()
 				e->refill(warriors[i]);
 				fullFood = warriors[i]->getfood_state();
 			}
-			//std::cout << "la meilleure case : " << mybestCase << std::endl;
 
 			warriors[i]->move(squares[mybestCase]->getX(), squares[mybestCase]->getY());
 			switch (squares[caseWarrior]->getType())

@@ -7,8 +7,6 @@
 #include <array>
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
-#include <vector>
 
 const int height = 100;
 const int width = 50;
