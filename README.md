@@ -42,3 +42,6 @@ Map:
 -Constitution aléatoire, taille (100x50), nourriture(500)/obstacle(1000)/vide avec fourmilière au centre.
 
 
+
+
+thanks to andrew-r-king for the SFML base. :)
